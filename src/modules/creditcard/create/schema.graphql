@@ -1,0 +1,22 @@
+input CreateCreditcardInput {
+  name: String!
+  logo: String
+  information: String
+  url: String
+  interest: Float
+  interest_fee: Int
+  amount: Int
+  term_min: Int
+  term_max: Int
+  exchange_rate: Float
+  age: Int
+  card_types: [String!]
+  require_income: Boolean
+  check_uc: Boolean
+  bad_redit: Boolean
+  resident: Boolean
+}
+
+type Mutation {
+  createCreditcard(input: CreateCreditcardInput!): Boolean!
+}

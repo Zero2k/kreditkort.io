@@ -1,0 +1,12 @@
+input SearchCreditcardInput {
+  name: String
+  amount: Int
+}
+
+type Query {
+  searchCreditcard(
+    input: SearchCreditcardInput
+    offset: Int
+    limit: Int
+  ): [Creditcard!]!
+}
