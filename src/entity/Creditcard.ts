@@ -42,12 +42,12 @@ export class Creditcard extends BaseEntity {
   @Column("boolean", { default: false })
   require_income: boolean;
 
-  @Column("boolean", { default: false })
+  @Column("boolean", { default: true })
   check_uc: boolean;
 
   @Column("boolean", { default: false })
   bad_credit: boolean;
 
-  @Column("boolean", { default: false })
+  @Column("boolean", { default: true })
   resident: boolean;
 }
