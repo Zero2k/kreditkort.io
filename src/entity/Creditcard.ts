@@ -1,4 +1,5 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { User } from "./User";
 
 @Entity("creditcards")
 export class Creditcard extends BaseEntity {
@@ -50,4 +51,9 @@ export class Creditcard extends BaseEntity {
 
   @Column("boolean", { default: true })
   resident: boolean;
+
+  @Column("uuid") userId: string;
+
+  @ManyToOne(() => User, user => user.creditcards)
+  user: User;
 }

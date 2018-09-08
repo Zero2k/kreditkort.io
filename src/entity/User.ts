@@ -4,8 +4,10 @@ import {
   Column,
   BaseEntity,
   PrimaryGeneratedColumn,
-  BeforeInsert
+  BeforeInsert,
+  OneToMany
 } from "typeorm";
+import { Creditcard } from "./Creditcard";
 
 @Entity("users")
 export class User extends BaseEntity {
@@ -23,6 +25,9 @@ export class User extends BaseEntity {
 
   @Column("boolean", { default: false })
   forgotPasswordLocked: boolean;
+
+  @OneToMany(() => Creditcard, creditcards => creditcards.user)
+  creditcards: Creditcard[];
 
   @BeforeInsert()
   async hashPasswordBeforeInsert() {

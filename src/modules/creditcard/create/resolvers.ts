@@ -5,7 +5,8 @@ export const resolvers: ResolverMap = {
   Mutation: {
     createCreditcard: async (_, { input: { ...data } }, { session }) => {
       const listing = await Creditcard.create({
-        ...data
+        ...data,
+        userId: session.userId
       }).save();
 
       return true;
