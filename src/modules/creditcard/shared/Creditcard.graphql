@@ -6,10 +6,12 @@ type Creditcard {
   url: String
   interest: Float
   interest_fee: Int
-  amount: Int
+  amount_min: Int
+  amount_max: Int
   term_min: Int
   term_max: Int
   exchange_rate: Float
+  annual_fee: Int
   age: Int
   card_types: [String!]
   require_income: Boolean

@@ -22,7 +22,7 @@ export const resolvers: ResolverMap = {
         });
       }
       if (amount) {
-        creditcardQB = creditcardQB.andWhere("card.amount >= :amount", {
+        creditcardQB = creditcardQB.andWhere("card.amount_min >= :amount", {
           amount
         });
       }

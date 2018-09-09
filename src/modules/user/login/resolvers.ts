@@ -12,7 +12,11 @@ const errorResponse = [
 
 export const resolvers: ResolverMap = {
   Mutation: {
-    login: async (_, { email, password }: any, { session, redis, req }) => {
+    login: async (
+      _,
+      { email, password }: GQL.ILoginOnMutationArguments,
+      { session, redis, req }
+    ) => {
       const user = await User.findOne({ where: { email } });
 
       if (!user) {

@@ -1,4 +1,10 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import {
+  Entity,
+  Column,
+  BaseEntity,
+  PrimaryGeneratedColumn,
+  ManyToOne
+} from "typeorm";
 import { User } from "./User";
 
 @Entity("creditcards")
@@ -24,7 +30,9 @@ export class Creditcard extends BaseEntity {
   interest_fee: number;
 
   @Column("int")
-  amount: number;
+  amount_min: number;
+  @Column("int")
+  amount_max: number;
 
   @Column("int")
   term_min: number;
@@ -33,6 +41,9 @@ export class Creditcard extends BaseEntity {
 
   @Column("double precision")
   exchange_rate: number;
+
+  @Column("int")
+  annual_fee: number;
 
   @Column("int")
   age: number;
@@ -52,7 +63,8 @@ export class Creditcard extends BaseEntity {
   @Column("boolean", { default: true })
   resident: boolean;
 
-  @Column("uuid") userId: string;
+  @Column("uuid")
+  userId: string;
 
   @ManyToOne(() => User, user => user.creditcards)
   user: User;

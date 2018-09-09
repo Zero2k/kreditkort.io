@@ -3,7 +3,7 @@ import { User } from "../../../entity/User";
 
 export const resolvers: ResolverMap = {
   Mutation: {
-    register: async (_, args: any, __) => {
+    register: async (_, args: GQL.IRegisterOnMutationArguments, __) => {
       /* try {
         await validUserSchema.validate(args, { abortEarly: false });
       } catch (err) {
