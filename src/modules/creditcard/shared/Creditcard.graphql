@@ -18,4 +18,5 @@ type Creditcard {
   check_uc: Boolean
   bad_redit: Boolean
   resident: Boolean
+  company: Company!
 }

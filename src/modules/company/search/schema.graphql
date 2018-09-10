@@ -1,0 +1,11 @@
+input SearchCompanyInput {
+  name: String
+}
+
+type Query {
+  searchCompany(
+    input: SearchCompanyInput
+    offset: Int
+    limit: Int
+  ): [Company!]!
+}

@@ -8,6 +8,7 @@ import {
   OneToMany
 } from "typeorm";
 import { Creditcard } from "./Creditcard";
+import { Company } from "./Company";
 
 @Entity("users")
 export class User extends BaseEntity {
@@ -28,6 +29,9 @@ export class User extends BaseEntity {
 
   @OneToMany(() => Creditcard, creditcards => creditcards.user)
   creditcards: Creditcard[];
+
+  @OneToMany(() => Company, companies => companies.user)
+  companies: Company[];
 
   @BeforeInsert()
   async hashPasswordBeforeInsert() {

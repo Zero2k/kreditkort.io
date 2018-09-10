@@ -1,4 +1,5 @@
 input CreateCreditcardInput {
+  companyId: ID!
   name: String!
   logo: String
   information: String

@@ -1,0 +1,7 @@
+input CreateCompanyInput {
+  name: String!
+}
+
+type Mutation {
+  createCompany(input: CreateCompanyInput!): Boolean!
+}

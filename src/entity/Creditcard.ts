@@ -6,6 +6,7 @@ import {
   ManyToOne
 } from "typeorm";
 import { User } from "./User";
+import { Company } from "./Company";
 
 @Entity("creditcards")
 export class Creditcard extends BaseEntity {
@@ -66,6 +67,12 @@ export class Creditcard extends BaseEntity {
   @Column("uuid")
   userId: string;
 
+  @Column("uuid")
+  companyId: string;
+
   @ManyToOne(() => User, user => user.creditcards)
   user: User;
+
+  @ManyToOne(() => Company, company => company.creditcards)
+  company: Company;
 }
