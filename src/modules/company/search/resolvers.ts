@@ -6,7 +6,11 @@ export const resolvers: ResolverMap = {
   Query: {
     searchCompany: async (
       _,
-      { input: { name }, limit = 10, offset = 0 },
+      {
+        input: { name },
+        limit = 10,
+        offset = 0
+      }: GQL.ISearchCompanyOnQueryArguments,
       __
     ) => {
       let companydQB = getConnection()

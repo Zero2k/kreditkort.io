@@ -4,7 +4,11 @@ import { getConnection } from "typeorm";
 
 export const resolvers: ResolverMap = {
   Query: {
-    findCompany: async (_, { input: { id } }, ___) => {
+    findCompany: async (
+      _,
+      { input: { id } }: GQL.IFindCompanyOnQueryArguments,
+      ___
+    ) => {
       return Company.find({ where: { id } });
     }
   }

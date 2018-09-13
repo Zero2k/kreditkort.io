@@ -12,7 +12,10 @@ input CreateCreditcardInput {
   term_max: Int
   exchange_rate: Float
   annual_fee: Int
+  withdrawal_fee: Float
   age: Int
+  advantages: [String!]
+  disadvantages: [String!]
   card_types: [String!]
   require_income: Boolean
   check_uc: Boolean

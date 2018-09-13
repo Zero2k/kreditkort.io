@@ -40,14 +40,23 @@ export class Creditcard extends BaseEntity {
   @Column("int")
   term_max: number;
 
-  @Column("double precision")
+  @Column("double precision", { nullable: true })
   exchange_rate: number;
 
-  @Column("int")
+  @Column("int", { nullable: true })
   annual_fee: number;
+
+  @Column("double precision", { nullable: true })
+  withdrawal_fee: number;
 
   @Column("int")
   age: number;
+
+  @Column("text", { array: true, nullable: true })
+  advantages: string[];
+
+  @Column("text", { array: true, nullable: true })
+  disadvantages: string[];
 
   @Column("text", { array: true })
   card_types: string[];

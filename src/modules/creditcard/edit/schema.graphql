@@ -1,5 +1,4 @@
-type Creditcard {
-  id: ID!
+input EditCreditcardInput {
   name: String!
   logo: String
   information: String
@@ -21,5 +20,8 @@ type Creditcard {
   check_uc: Boolean
   bad_redit: Boolean
   resident: Boolean
-  company: Company!
+}
+
+type Mutation {
+  editCreditcard(cardId: String!, input: EditCreditcardInput!): Boolean!
 }
