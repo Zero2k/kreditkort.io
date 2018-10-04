@@ -15,6 +15,9 @@ input EditCreditcardInput {
   age: Int
   advantages: [String!]
   disadvantages: [String!]
+  bonuses: [String!]
+  traveling: [String!]
+  insurances: [String!]
   card_types: [String!]
   require_income: Boolean
   check_uc: Boolean
