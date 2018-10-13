@@ -24,6 +24,8 @@ interface IQuery {
 __typename: "Query";
 findCompany: Array<ICompany>;
 searchCompany: Array<ICompany>;
+findCreditcardByLowestInterest: Array<ICreditcard>;
+findCreditcardByHighestCredit: Array<ICreditcard>;
 searchCreditcard: Array<ICreditcard>;
 me: IUser | null;
 }
@@ -40,6 +42,16 @@ offset?: number | null;
 limit?: number | null;
 }
 
+interface IFindCreditcardByLowestInterestOnQueryArguments {
+offset?: number | null;
+limit?: number | null;
+}
+
+interface IFindCreditcardByHighestCreditOnQueryArguments {
+offset?: number | null;
+limit?: number | null;
+}
+
 interface ISearchCreditcardOnQueryArguments {
 input?: ISearchCreditcardInput | null;
 offset?: number | null;
@@ -47,15 +59,14 @@ limit?: number | null;
 }
 
 interface IFindCompanyInput {
-__typename: "FindCompanyInput";
-id: string | null;
+id?: string | null;
 }
 
 interface ICompany {
 __typename: "Company";
 id: string;
 name: string | null;
-creditcards: Array<ICreditcard>;
+creditcards: Array<ICreditcard | null>;
 }
 
 interface ICreditcard {
@@ -75,12 +86,12 @@ exchange_rate: number | null;
 annual_fee: number | null;
 withdrawal_fee: number | null;
 age: number | null;
-advantages: Array<string>;
-disadvantages: Array<string>;
-bonuses: Array<string>;
-traveling: Array<string>;
-insurances: Array<string>;
-card_types: Array<string>;
+advantages: Array<string> | null;
+disadvantages: Array<string> | null;
+bonuses: Array<string> | null;
+traveling: Array<string> | null;
+insurances: Array<string> | null;
+card_types: Array<string> | null;
 require_income: boolean | null;
 check_uc: boolean | null;
 bad_redit: boolean | null;
@@ -89,17 +100,15 @@ company: ICompany;
 }
 
 interface ISearchCompanyInput {
-__typename: "SearchCompanyInput";
-name: string | null;
+name?: string | null;
 }
 
 interface ISearchCreditcardInput {
-__typename: "SearchCreditcardInput";
-name: string | null;
-amount: number | null;
-card_types: string | null;
-check_uc: boolean | null;
-bad_credit: boolean | null;
+name?: string | null;
+amount?: number | null;
+card_types?: string | null;
+check_uc?: boolean | null;
+bad_credit?: boolean | null;
 }
 
 interface IUser {
@@ -115,7 +124,7 @@ createCreditcard: boolean;
 editCreditcard: boolean;
 login: ILoginResponse;
 logout: boolean | null;
-register: Array<IError>;
+register: Array<IError> | null;
 }
 
 interface ICreateCompanyOnMutationArguments {
@@ -142,70 +151,67 @@ password: string;
 }
 
 interface ICreateCompanyInput {
-__typename: "CreateCompanyInput";
 name: string;
 }
 
 interface ICreateCreditcardInput {
-__typename: "CreateCreditcardInput";
 companyId: string;
 name: string;
-logo: string | null;
-information: string | null;
-url: string | null;
-interest: number | null;
-interest_fee: number | null;
-amount_min: number | null;
-amount_max: number | null;
-term_min: number | null;
-term_max: number | null;
-exchange_rate: number | null;
-annual_fee: number | null;
-withdrawal_fee: number | null;
-age: number | null;
-advantages: Array<string>;
-disadvantages: Array<string>;
-bonuses: Array<string>;
-traveling: Array<string>;
-insurances: Array<string>;
-card_types: Array<string>;
-require_income: boolean | null;
-check_uc: boolean | null;
-bad_redit: boolean | null;
-resident: boolean | null;
+logo?: string | null;
+information?: string | null;
+url?: string | null;
+interest?: number | null;
+interest_fee?: number | null;
+amount_min?: number | null;
+amount_max?: number | null;
+term_min?: number | null;
+term_max?: number | null;
+exchange_rate?: number | null;
+annual_fee?: number | null;
+withdrawal_fee?: number | null;
+age?: number | null;
+advantages?: Array<string> | null;
+disadvantages?: Array<string> | null;
+bonuses?: Array<string> | null;
+traveling?: Array<string> | null;
+insurances?: Array<string> | null;
+card_types?: Array<string> | null;
+require_income?: boolean | null;
+check_uc?: boolean | null;
+bad_redit?: boolean | null;
+resident?: boolean | null;
 }
 
 interface IEditCreditcardInput {
-__typename: "EditCreditcardInput";
 name: string;
-logo: string | null;
-information: string | null;
-url: string | null;
-interest: number | null;
-interest_fee: number | null;
-amount_min: number | null;
-amount_max: number | null;
-term_min: number | null;
-term_max: number | null;
-exchange_rate: number | null;
-annual_fee: number | null;
-withdrawal_fee: number | null;
-age: number | null;
-advantages: Array<string>;
-disadvantages: Array<string>;
-bonuses: Array<string>;
-traveling: Array<string>;
-insurances: Array<string>;
-card_types: Array<string>;
-require_income: boolean | null;
-check_uc: boolean | null;
-bad_redit: boolean | null;
-resident: boolean | null;
+logo?: string | null;
+information?: string | null;
+url?: string | null;
+interest?: number | null;
+interest_fee?: number | null;
+amount_min?: number | null;
+amount_max?: number | null;
+term_min?: number | null;
+term_max?: number | null;
+exchange_rate?: number | null;
+annual_fee?: number | null;
+withdrawal_fee?: number | null;
+age?: number | null;
+advantages?: Array<string> | null;
+disadvantages?: Array<string> | null;
+bonuses?: Array<string> | null;
+traveling?: Array<string> | null;
+insurances?: Array<string> | null;
+card_types?: Array<string> | null;
+require_income?: boolean | null;
+check_uc?: boolean | null;
+bad_redit?: boolean | null;
+resident?: boolean | null;
 }
 
 interface ILoginResponse {
 __typename: "LoginResponse";
-errors: Array<IError>;
+errors: Array<IError> | null;
 sessionId: string | null;
 }
 

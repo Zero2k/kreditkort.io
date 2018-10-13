@@ -1,0 +1,11 @@
+type Query {
+  findCreditcardByLowestInterest(
+    offset: Int
+    limit: Int
+  ): [Creditcard!]!
+
+  findCreditcardByHighestCredit(
+    offset: Int
+    limit: Int
+  ): [Creditcard!]!
+}
