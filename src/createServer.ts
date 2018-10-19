@@ -30,6 +30,7 @@ export const createServer = async () => {
   });
 
   const app = express();
+  app.use('/static', express.static('public'));
 
   app.use(
     session({
