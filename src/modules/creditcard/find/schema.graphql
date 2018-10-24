@@ -8,4 +8,9 @@ type Query {
     offset: Int
     limit: Int
   ): [Creditcard!]!
+
+  findCreditcardWithoutFee(
+    offset: Int
+    limit: Int
+  ): [Creditcard!]!
 }

@@ -26,6 +26,7 @@ findCompany: Array<ICompany>;
 searchCompany: Array<ICompany>;
 findCreditcardByLowestInterest: Array<ICreditcard>;
 findCreditcardByHighestCredit: Array<ICreditcard>;
+findCreditcardWithoutFee: Array<ICreditcard>;
 searchCreditcard: Array<ICreditcard>;
 me: IUser | null;
 }
@@ -48,6 +49,11 @@ limit?: number | null;
 }
 
 interface IFindCreditcardByHighestCreditOnQueryArguments {
+offset?: number | null;
+limit?: number | null;
+}
+
+interface IFindCreditcardWithoutFeeOnQueryArguments {
 offset?: number | null;
 limit?: number | null;
 }

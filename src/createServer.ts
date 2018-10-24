@@ -30,7 +30,7 @@ export const createServer = async () => {
   });
 
   const app = express();
-  app.use('/static', express.static('public'));
+  app.use("/static", express.static("public"));
 
   app.use(
     session({
@@ -53,10 +53,7 @@ export const createServer = async () => {
   app.use(
     cors({
       credentials: true,
-      origin:
-        process.env.NODE_ENV === "development"
-          ? "*"
-          : (process.env.FRONTEND_HOST as string)
+      origin: process.env.FRONTEND_HOST
     })
   );
 

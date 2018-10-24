@@ -36,6 +36,23 @@ export const resolvers: ResolverMap = {
         skip: offset,
         take: limit
       });
+    },
+
+    findCreditcardWithoutFee: async (
+      _,
+      { limit = 10, offset = 0 }: GQL.IFindCreditcardWithoutFeeOnQueryArguments,
+      __
+    ) => {
+      return Creditcard.find({
+        where: {
+          annual_fee: 0
+        },
+        order: {
+          amount_max: "DESC"
+        },
+        skip: offset,
+        take: limit
+      });
     }
   }
 };
