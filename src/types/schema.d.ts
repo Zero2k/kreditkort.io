@@ -72,6 +72,9 @@ interface ICompany {
 __typename: "Company";
 id: string;
 name: string | null;
+logo: string | null;
+website: string | null;
+about: string | null;
 creditcards: Array<ICreditcard | null>;
 }
 

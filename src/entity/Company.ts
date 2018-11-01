@@ -18,6 +18,15 @@ export class Company extends BaseEntity {
   @Column("varchar", { length: 255 })
   name: string;
 
+  @Column("text", { nullable: true })
+  logo: string;
+
+  @Column("varchar", { length: 255, nullable: true })
+  website: string;
+
+  @Column("text", { nullable: true })
+  about: string;
+
   @Column("uuid")
   userId: string;
 

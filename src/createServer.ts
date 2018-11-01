@@ -10,16 +10,20 @@ import * as http from "http";
 
 import { dbConnect } from "./utils/dbConnect";
 import { createSchema } from "./utils/createSchema";
+import { middleware } from "./middleware";
 import { redis } from "./redis";
 
 const RedisStore = connectRedis(session as any);
 
 export const createServer = async () => {
+  const schema = createSchema() as any;
+  applyMiddleware(schema, middleware);
+
   const apolloServer = new ApolloServer({
     subscriptions: {
       path: "/"
     },
-    schema: createSchema() as any,
+    schema,
     context: ({ req, res }: any) => ({
       redis,
       session: req ? req.session : undefined,
