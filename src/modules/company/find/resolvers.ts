@@ -9,7 +9,7 @@ export const resolvers: ResolverMap = {
       { input: { id } }: GQL.IFindCompanyOnQueryArguments,
       ___
     ) => {
-      return Company.find({ where: { id } });
+      return Company.findOne({ where: { id } });
     }
   }
 };

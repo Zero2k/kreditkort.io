@@ -3,7 +3,11 @@ import { Company } from "../../../entity/Company";
 
 export const resolvers: ResolverMap = {
   Mutation: {
-    createCompany: async (_, { input: { ...data } }, { session }) => {
+    createCompany: async (
+      _,
+      { input: { ...data } }: GQL.ICreateCompanyOnMutationArguments,
+      { session }
+    ) => {
       const company = await Company.create({
         ...data,
         userId: session.userId

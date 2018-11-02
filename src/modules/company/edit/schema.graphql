@@ -1,0 +1,10 @@
+input EditCompanyInput {
+  name: String!
+  logo: String
+  website: String
+  about: String
+}
+
+type Mutation {
+  editCompany(companyId: String!, input: EditCompanyInput!): Boolean!
+}

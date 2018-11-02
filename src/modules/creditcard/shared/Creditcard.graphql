@@ -5,7 +5,7 @@ type Creditcard {
   information: String
   url: String
   interest: Float
-  interest_fee: Int
+  interest_free: Int
   amount_min: Int
   amount_max: Int
   term_min: Int

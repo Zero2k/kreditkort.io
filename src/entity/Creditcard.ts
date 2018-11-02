@@ -28,7 +28,7 @@ export class Creditcard extends BaseEntity {
   @Column("double precision")
   interest: number;
   @Column("int")
-  interest_fee: number;
+  interest_free: number;
 
   @Column("int")
   amount_min: number;

@@ -22,7 +22,7 @@ column: number;
 
 interface IQuery {
 __typename: "Query";
-findCompany: Array<ICompany>;
+findCompany: ICompany;
 searchCompany: Array<ICompany>;
 findCreditcardByLowestInterest: Array<ICreditcard>;
 findCreditcardByHighestCredit: Array<ICreditcard>;
@@ -33,8 +33,6 @@ me: IUser | null;
 
 interface IFindCompanyOnQueryArguments {
 input?: IFindCompanyInput | null;
-offset?: number | null;
-limit?: number | null;
 }
 
 interface ISearchCompanyOnQueryArguments {
@@ -86,7 +84,7 @@ logo: string | null;
 information: string | null;
 url: string | null;
 interest: number | null;
-interest_fee: number | null;
+interest_free: number | null;
 amount_min: number | null;
 amount_max: number | null;
 term_min: number | null;
@@ -129,6 +127,7 @@ email: string;
 interface IMutation {
 __typename: "Mutation";
 createCompany: boolean;
+editCompany: boolean;
 createCreditcard: boolean;
 editCreditcard: boolean;
 login: ILoginResponse;
@@ -138,6 +137,11 @@ register: Array<IError> | null;
 
 interface ICreateCompanyOnMutationArguments {
 input: ICreateCompanyInput;
+}
+
+interface IEditCompanyOnMutationArguments {
+companyId: string;
+input: IEditCompanyInput;
 }
 
 interface ICreateCreditcardOnMutationArguments {
@@ -161,6 +165,16 @@ password: string;
 
 interface ICreateCompanyInput {
 name: string;
+logo?: string | null;
+website?: string | null;
+about?: string | null;
+}
+
+interface IEditCompanyInput {
+name: string;
+logo?: string | null;
+website?: string | null;
+about?: string | null;
 }
 
 interface ICreateCreditcardInput {
@@ -170,7 +184,7 @@ logo?: string | null;
 information?: string | null;
 url?: string | null;
 interest?: number | null;
-interest_fee?: number | null;
+interest_free?: number | null;
 amount_min?: number | null;
 amount_max?: number | null;
 term_min?: number | null;
@@ -197,7 +211,7 @@ logo?: string | null;
 information?: string | null;
 url?: string | null;
 interest?: number | null;
-interest_fee?: number | null;
+interest_free?: number | null;
 amount_min?: number | null;
 amount_max?: number | null;
 term_min?: number | null;

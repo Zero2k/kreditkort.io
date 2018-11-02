@@ -1,5 +1,8 @@
 input CreateCompanyInput {
   name: String!
+  logo: String
+  website: String
+  about: String
 }
 
 type Mutation {
