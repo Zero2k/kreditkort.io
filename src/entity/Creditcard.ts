@@ -91,6 +91,8 @@ export class Creditcard extends BaseEntity {
   @ManyToOne(() => User, user => user.creditcards)
   user: User;
 
-  @ManyToOne(() => Company, company => company.creditcards)
+  @ManyToOne(() => Company, company => company.creditcards, {
+    onDelete: "CASCADE"
+  })
   company: Company;
 }

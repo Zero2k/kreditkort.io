@@ -1,5 +1,5 @@
 input FindCompanyInput {
-  id: String
+  id: String!
 }
 
 type Query {

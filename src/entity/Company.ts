@@ -33,6 +33,6 @@ export class Company extends BaseEntity {
   @ManyToOne(() => User, user => user.creditcards)
   user: User;
 
-  @OneToMany(() => Creditcard, creditcards => creditcards.company)
+  @OneToMany(() => Creditcard, creditcards => creditcards.company, { onDelete: 'CASCADE' })
   creditcards: Creditcard[];
 }

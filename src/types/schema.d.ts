@@ -63,7 +63,7 @@ limit?: number | null;
 }
 
 interface IFindCompanyInput {
-id?: string | null;
+id: string;
 }
 
 interface ICompany {
@@ -127,6 +127,7 @@ email: string;
 interface IMutation {
 __typename: "Mutation";
 createCompany: boolean;
+deleteCompany: boolean;
 editCompany: boolean;
 createCreditcard: boolean;
 editCreditcard: boolean;
@@ -137,6 +138,10 @@ register: Array<IError> | null;
 
 interface ICreateCompanyOnMutationArguments {
 input: ICreateCompanyInput;
+}
+
+interface IDeleteCompanyOnMutationArguments {
+id: string;
 }
 
 interface IEditCompanyOnMutationArguments {
