@@ -35,11 +35,6 @@ export class Creditcard extends BaseEntity {
   @Column("int")
   amount_max: number;
 
-  @Column("int")
-  term_min: number;
-  @Column("int")
-  term_max: number;
-
   @Column("double precision", { nullable: true })
   exchange_rate: number;
 
@@ -67,7 +62,7 @@ export class Creditcard extends BaseEntity {
   @Column("text", { array: true, nullable: true })
   insurances: string[];
 
-  @Column("text", { array: true })
+  @Column("text", { array: true, nullable: true })
   card_types: string[];
 
   @Column("boolean", { default: false })

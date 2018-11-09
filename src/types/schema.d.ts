@@ -87,8 +87,6 @@ interest: number | null;
 interest_free: number | null;
 amount_min: number | null;
 amount_max: number | null;
-term_min: number | null;
-term_max: number | null;
 exchange_rate: number | null;
 annual_fee: number | null;
 withdrawal_fee: number | null;
@@ -101,7 +99,7 @@ insurances: Array<string> | null;
 card_types: Array<string> | null;
 require_income: boolean | null;
 check_uc: boolean | null;
-bad_redit: boolean | null;
+bad_credit: boolean | null;
 resident: boolean | null;
 company: ICompany;
 }
@@ -192,8 +190,6 @@ interest?: number | null;
 interest_free?: number | null;
 amount_min?: number | null;
 amount_max?: number | null;
-term_min?: number | null;
-term_max?: number | null;
 exchange_rate?: number | null;
 annual_fee?: number | null;
 withdrawal_fee?: number | null;
@@ -206,7 +202,7 @@ insurances?: Array<string> | null;
 card_types?: Array<string> | null;
 require_income?: boolean | null;
 check_uc?: boolean | null;
-bad_redit?: boolean | null;
+bad_credit?: boolean | null;
 resident?: boolean | null;
 }
 
@@ -219,8 +215,6 @@ interest?: number | null;
 interest_free?: number | null;
 amount_min?: number | null;
 amount_max?: number | null;
-term_min?: number | null;
-term_max?: number | null;
 exchange_rate?: number | null;
 annual_fee?: number | null;
 withdrawal_fee?: number | null;
@@ -233,7 +227,7 @@ insurances?: Array<string> | null;
 card_types?: Array<string> | null;
 require_income?: boolean | null;
 check_uc?: boolean | null;
-bad_redit?: boolean | null;
+bad_credit?: boolean | null;
 resident?: boolean | null;
 }
 

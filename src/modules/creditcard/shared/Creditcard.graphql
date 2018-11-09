@@ -8,8 +8,6 @@ type Creditcard {
   interest_free: Int
   amount_min: Int
   amount_max: Int
-  term_min: Int
-  term_max: Int
   exchange_rate: Float
   annual_fee: Int
   withdrawal_fee: Float
@@ -22,7 +20,7 @@ type Creditcard {
   card_types: [String!]
   require_income: Boolean
   check_uc: Boolean
-  bad_redit: Boolean
+  bad_credit: Boolean
   resident: Boolean
   company: Company!
 }
