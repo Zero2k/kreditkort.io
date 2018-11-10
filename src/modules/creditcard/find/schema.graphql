@@ -1,4 +1,12 @@
+input FindCreditcardInput {
+  id: String!
+}
+
 type Query {
+  findCreditcard(
+    input: FindCreditcardInput
+  ): Creditcard!
+
   findCreditcardByLowestInterest(
     offset: Int
     limit: Int

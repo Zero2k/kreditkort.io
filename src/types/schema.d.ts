@@ -24,6 +24,7 @@ interface IQuery {
 __typename: "Query";
 findCompany: ICompany;
 searchCompany: Array<ICompany>;
+findCreditcard: ICreditcard;
 findCreditcardByLowestInterest: Array<ICreditcard>;
 findCreditcardByHighestCredit: Array<ICreditcard>;
 findCreditcardWithoutFee: Array<ICreditcard>;
@@ -39,6 +40,10 @@ interface ISearchCompanyOnQueryArguments {
 input?: ISearchCompanyInput | null;
 offset?: number | null;
 limit?: number | null;
+}
+
+interface IFindCreditcardOnQueryArguments {
+input?: IFindCreditcardInput | null;
 }
 
 interface IFindCreditcardByLowestInterestOnQueryArguments {
@@ -106,6 +111,10 @@ company: ICompany;
 
 interface ISearchCompanyInput {
 name?: string | null;
+}
+
+interface IFindCreditcardInput {
+id: string;
 }
 
 interface ISearchCreditcardInput {

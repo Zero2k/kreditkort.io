@@ -4,6 +4,14 @@ import { getConnection } from "typeorm";
 
 export const resolvers: ResolverMap = {
   Query: {
+    findCreditcard: async (
+      _,
+      { input: { id } }: GQL.IFindCreditcardOnQueryArguments,
+      ___
+    ) => {
+      return Creditcard.findOne({ where: { id } });
+    },
+
     findCreditcardByLowestInterest: async (
       _,
       {
