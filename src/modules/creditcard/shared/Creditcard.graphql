@@ -1,6 +1,7 @@
 type Creditcard {
   id: ID!
   name: String!
+  slug: String
   logo: String
   information: String
   url: String
@@ -12,6 +13,7 @@ type Creditcard {
   annual_fee: Int
   withdrawal_fee: Float
   age: Int
+  features: [String!]
   advantages: [String!]
   disadvantages: [String!]
   bonuses: [String!]

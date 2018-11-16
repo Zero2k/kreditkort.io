@@ -46,6 +46,7 @@ export const resolvers: ResolverMap = {
       return creditcardQB
         .take(limit)
         .skip(offset)
+        .orderBy("card.interest", "ASC")
         .getMany();
     }
   }

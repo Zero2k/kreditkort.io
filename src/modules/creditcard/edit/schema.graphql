@@ -1,5 +1,6 @@
 input EditCreditcardInput {
   name: String!
+  slug: String
   logo: String
   information: String
   url: String
@@ -11,6 +12,7 @@ input EditCreditcardInput {
   annual_fee: Int
   withdrawal_fee: Float
   age: Int
+  features: [String!]
   advantages: [String!]
   disadvantages: [String!]
   bonuses: [String!]

@@ -25,6 +25,7 @@ __typename: "Query";
 findCompany: ICompany;
 searchCompany: Array<ICompany>;
 findCreditcard: ICreditcard;
+findCreditcardBySlug: ICreditcard;
 findCreditcardByLowestInterest: Array<ICreditcard>;
 findCreditcardByHighestCredit: Array<ICreditcard>;
 findCreditcardWithoutFee: Array<ICreditcard>;
@@ -44,6 +45,10 @@ limit?: number | null;
 
 interface IFindCreditcardOnQueryArguments {
 input?: IFindCreditcardInput | null;
+}
+
+interface IFindCreditcardBySlugOnQueryArguments {
+input?: IFindCreditcardBySlugInput | null;
 }
 
 interface IFindCreditcardByLowestInterestOnQueryArguments {
@@ -85,6 +90,7 @@ interface ICreditcard {
 __typename: "Creditcard";
 id: string;
 name: string;
+slug: string | null;
 logo: string | null;
 information: string | null;
 url: string | null;
@@ -96,6 +102,7 @@ exchange_rate: number | null;
 annual_fee: number | null;
 withdrawal_fee: number | null;
 age: number | null;
+features: Array<string> | null;
 advantages: Array<string> | null;
 disadvantages: Array<string> | null;
 bonuses: Array<string> | null;
@@ -115,6 +122,10 @@ name?: string | null;
 
 interface IFindCreditcardInput {
 id: string;
+}
+
+interface IFindCreditcardBySlugInput {
+slug: string;
 }
 
 interface ISearchCreditcardInput {
@@ -203,6 +214,7 @@ exchange_rate?: number | null;
 annual_fee?: number | null;
 withdrawal_fee?: number | null;
 age?: number | null;
+features?: Array<string> | null;
 advantages?: Array<string> | null;
 disadvantages?: Array<string> | null;
 bonuses?: Array<string> | null;
@@ -217,6 +229,7 @@ resident?: boolean | null;
 
 interface IEditCreditcardInput {
 name: string;
+slug?: string | null;
 logo?: string | null;
 information?: string | null;
 url?: string | null;
@@ -228,6 +241,7 @@ exchange_rate?: number | null;
 annual_fee?: number | null;
 withdrawal_fee?: number | null;
 age?: number | null;
+features?: Array<string> | null;
 advantages?: Array<string> | null;
 disadvantages?: Array<string> | null;
 bonuses?: Array<string> | null;

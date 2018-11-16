@@ -5,7 +5,12 @@ import { getConnection } from "typeorm";
 export const resolvers: ResolverMap = {
   Company: {
     creditcards: async ({ id }, __, ___) => {
-      return Creditcard.find({ where: { companyId: id } });
+      return Creditcard.find({
+        where: { companyId: id },
+        order: {
+          name: "ASC"
+        }
+      });
     }
   }
 };

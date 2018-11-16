@@ -2,9 +2,17 @@ input FindCreditcardInput {
   id: String!
 }
 
+input FindCreditcardBySlugInput {
+  slug: String!
+}
+
 type Query {
   findCreditcard(
     input: FindCreditcardInput
+  ): Creditcard!
+
+  findCreditcardBySlug(
+    input: FindCreditcardBySlugInput
   ): Creditcard!
 
   findCreditcardByLowestInterest(

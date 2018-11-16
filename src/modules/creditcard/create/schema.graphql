@@ -12,6 +12,7 @@ input CreateCreditcardInput {
   annual_fee: Int
   withdrawal_fee: Float
   age: Int
+  features: [String!]
   advantages: [String!]
   disadvantages: [String!]
   bonuses: [String!]

@@ -9,7 +9,19 @@ export const resolvers: ResolverMap = {
       { input: { id } }: GQL.IFindCreditcardOnQueryArguments,
       ___
     ) => {
-      return Creditcard.findOne({ where: { id } });
+      return Creditcard.findOne({
+        where: { id }
+      });
+    },
+
+    findCreditcardBySlug: async (
+      _,
+      { input: { slug } }: GQL.IFindCreditcardBySlugOnQueryArguments,
+      ___
+    ) => {
+      return Creditcard.findOne({
+        where: { slug }
+      });
     },
 
     findCreditcardByLowestInterest: async (

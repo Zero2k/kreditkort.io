@@ -3,10 +3,14 @@ import {
   Column,
   BaseEntity,
   PrimaryGeneratedColumn,
+  BeforeInsert,
+  BeforeUpdate,
   ManyToOne
 } from "typeorm";
 import { User } from "./User";
 import { Company } from "./Company";
+
+import { slugify } from "../utils/slugify";
 
 @Entity("creditcards")
 export class Creditcard extends BaseEntity {
@@ -15,6 +19,9 @@ export class Creditcard extends BaseEntity {
 
   @Column("varchar", { length: 255 })
   name: string;
+
+  @Column("varchar", { length: 255 })
+  slug: string;
 
   @Column("text", { nullable: true })
   logo: string;
@@ -46,6 +53,9 @@ export class Creditcard extends BaseEntity {
 
   @Column("int")
   age: number;
+
+  @Column("text", { array: true, nullable: true })
+  features: string[];
 
   @Column("text", { array: true, nullable: true })
   advantages: string[];
@@ -90,4 +100,9 @@ export class Creditcard extends BaseEntity {
     onDelete: "CASCADE"
   })
   company: Company;
+
+  @BeforeInsert()
+  async createSlug() {
+    this.slug = await slugify(this.name);
+  }
 }
