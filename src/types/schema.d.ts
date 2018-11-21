@@ -148,7 +148,9 @@ createCompany: boolean;
 deleteCompany: boolean;
 editCompany: boolean;
 createCreditcard: boolean;
+deleteCreditcard: boolean;
 editCreditcard: boolean;
+createPost: boolean;
 login: ILoginResponse;
 logout: boolean | null;
 register: Array<IError> | null;
@@ -171,9 +173,17 @@ interface ICreateCreditcardOnMutationArguments {
 input: ICreateCreditcardInput;
 }
 
+interface IDeleteCreditcardOnMutationArguments {
+id: string;
+}
+
 interface IEditCreditcardOnMutationArguments {
 cardId: string;
 input: IEditCreditcardInput;
+}
+
+interface ICreatePostOnMutationArguments {
+input: IPostInput;
 }
 
 interface ILoginOnMutationArguments {
@@ -252,6 +262,11 @@ require_income?: boolean | null;
 check_uc?: boolean | null;
 bad_credit?: boolean | null;
 resident?: boolean | null;
+}
+
+interface IPostInput {
+title: string;
+text?: string | null;
 }
 
 interface ILoginResponse {

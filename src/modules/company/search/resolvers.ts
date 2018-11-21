@@ -25,6 +25,7 @@ export const resolvers: ResolverMap = {
       return companydQB
         .take(limit)
         .skip(offset)
+        .orderBy("company.name", "ASC")
         .getMany();
     }
   }

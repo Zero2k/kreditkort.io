@@ -1,0 +1,8 @@
+input PostInput {
+  title: String!
+  text: String
+}
+
+type Mutation {
+  createPost(input: PostInput!): Boolean!
+}
