@@ -1,0 +1,12 @@
+input EditPostInput {
+  title: String!
+  slug: String
+  description: String
+  image: String
+  text: String
+  categories: [String!]
+}
+
+type Mutation {
+  editPost(postId: String!, input: EditPostInput!): Boolean!
+}

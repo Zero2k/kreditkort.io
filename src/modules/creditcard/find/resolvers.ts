@@ -1,6 +1,5 @@
 import { ResolverMap } from "../../../types/graphql-utils";
 import { Creditcard } from "../../../entity/Creditcard";
-import { getConnection } from "typeorm";
 
 export const resolvers: ResolverMap = {
   Query: {

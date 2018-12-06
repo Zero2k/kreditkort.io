@@ -1,0 +1,17 @@
+input FindPostInput {
+  id: String!
+}
+
+input FindPostBySlugInput {
+  slug: String!
+}
+
+type Query {
+  findPost(
+    input: FindPostInput
+  ): Post!
+
+  findPostBySlug(
+    input: FindPostBySlugInput
+  ): Post!
+}

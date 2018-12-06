@@ -30,6 +30,9 @@ findCreditcardByLowestInterest: Array<ICreditcard>;
 findCreditcardByHighestCredit: Array<ICreditcard>;
 findCreditcardWithoutFee: Array<ICreditcard>;
 searchCreditcard: Array<ICreditcard>;
+findPost: IPost;
+findPostBySlug: IPost;
+searchPost: Array<IPost>;
 me: IUser | null;
 }
 
@@ -68,6 +71,20 @@ limit?: number | null;
 
 interface ISearchCreditcardOnQueryArguments {
 input?: ISearchCreditcardInput | null;
+offset?: number | null;
+limit?: number | null;
+}
+
+interface IFindPostOnQueryArguments {
+input?: IFindPostInput | null;
+}
+
+interface IFindPostBySlugOnQueryArguments {
+input?: IFindPostBySlugInput | null;
+}
+
+interface ISearchPostOnQueryArguments {
+input?: ISearchPostInput | null;
 offset?: number | null;
 limit?: number | null;
 }
@@ -136,6 +153,30 @@ check_uc?: boolean | null;
 bad_credit?: boolean | null;
 }
 
+interface IFindPostInput {
+id: string;
+}
+
+interface IPost {
+__typename: "Post";
+id: string;
+title: string;
+slug: string | null;
+image: string | null;
+text: string | null;
+categories: Array<string> | null;
+createdAt: string;
+}
+
+interface IFindPostBySlugInput {
+slug: string;
+}
+
+interface ISearchPostInput {
+query?: string | null;
+categories?: string | null;
+}
+
 interface IUser {
 __typename: "User";
 id: string;
@@ -151,6 +192,8 @@ createCreditcard: boolean;
 deleteCreditcard: boolean;
 editCreditcard: boolean;
 createPost: boolean;
+deletePost: boolean;
+editPost: boolean;
 login: ILoginResponse;
 logout: boolean | null;
 register: Array<IError> | null;
@@ -184,6 +227,15 @@ input: IEditCreditcardInput;
 
 interface ICreatePostOnMutationArguments {
 input: IPostInput;
+}
+
+interface IDeletePostOnMutationArguments {
+id: string;
+}
+
+interface IEditPostOnMutationArguments {
+postId: string;
+input: IEditPostInput;
 }
 
 interface ILoginOnMutationArguments {
@@ -267,6 +319,16 @@ resident?: boolean | null;
 interface IPostInput {
 title: string;
 text?: string | null;
+image?: string | null;
+categories?: Array<string> | null;
+}
+
+interface IEditPostInput {
+title: string;
+slug?: string | null;
+image?: string | null;
+text?: string | null;
+categories?: Array<string> | null;
 }
 
 interface ILoginResponse {

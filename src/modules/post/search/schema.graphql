@@ -1,0 +1,12 @@
+input SearchPostInput {
+  query: String
+  categories: String
+}
+
+type Query {
+  searchPost(
+    input: SearchPostInput
+    offset: Int
+    limit: Int
+  ): [Post!]!
+}

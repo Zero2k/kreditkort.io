@@ -1,21 +1,21 @@
 import { ResolverMap } from "../../../types/graphql-utils";
-import { Creditcard } from "../../../entity/Creditcard";
+import { Post } from "../../../entity/Post";
 import { getConnection } from "typeorm";
 
 export const resolvers: ResolverMap = {
   Mutation: {
-    editCreditcard: async (
+    editPost: async (
       _,
-      { cardId, input: { ...data } }: GQL.IEditCreditcardOnMutationArguments,
+      { postId, input: { ...data } }: GQL.IEditPostOnMutationArguments,
       { session }
     ) => {
       const {
-        raw: [newCreditcard]
+        raw: [newPost]
       } = await getConnection()
         .createQueryBuilder()
-        .update(Creditcard)
+        .update(Post)
         .set(data)
-        .where("id = :id", { id: cardId })
+        .where("id = :id", { id: postId })
         .returning("*")
         .execute();
 

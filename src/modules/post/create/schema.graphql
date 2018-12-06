@@ -1,6 +1,9 @@
 input PostInput {
   title: String!
+  description: String
   text: String
+  image: String
+  categories: [String!]
 }
 
 type Mutation {
