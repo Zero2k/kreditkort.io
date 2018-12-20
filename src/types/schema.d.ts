@@ -23,6 +23,7 @@ column: number;
 interface IQuery {
 __typename: "Query";
 findCompany: ICompany;
+findCompanyBySlug: ICompany;
 searchCompany: Array<ICompany>;
 findCreditcard: ICreditcard;
 findCreditcardBySlug: ICreditcard;
@@ -38,6 +39,10 @@ me: IUser | null;
 
 interface IFindCompanyOnQueryArguments {
 input?: IFindCompanyInput | null;
+}
+
+interface IFindCompanyBySlugOnQueryArguments {
+input?: IFindCompanyBySlugInput | null;
 }
 
 interface ISearchCompanyOnQueryArguments {
@@ -97,9 +102,11 @@ interface ICompany {
 __typename: "Company";
 id: string;
 name: string | null;
+slug: string | null;
 logo: string | null;
 website: string | null;
 about: string | null;
+markdown: string | null;
 creditcards: Array<ICreditcard | null>;
 }
 
@@ -133,6 +140,10 @@ resident: boolean | null;
 company: ICompany;
 }
 
+interface IFindCompanyBySlugInput {
+slug: string;
+}
+
 interface ISearchCompanyInput {
 name?: string | null;
 }
@@ -162,8 +173,10 @@ __typename: "Post";
 id: string;
 title: string;
 slug: string | null;
+description: string | null;
 image: string | null;
 text: string | null;
+markdown: string | null;
 categories: Array<string> | null;
 createdAt: string;
 }
@@ -257,6 +270,7 @@ about?: string | null;
 
 interface IEditCompanyInput {
 name: string;
+slug?: string | null;
 logo?: string | null;
 website?: string | null;
 about?: string | null;
@@ -318,6 +332,7 @@ resident?: boolean | null;
 
 interface IPostInput {
 title: string;
+description?: string | null;
 text?: string | null;
 image?: string | null;
 categories?: Array<string> | null;
@@ -326,6 +341,7 @@ categories?: Array<string> | null;
 interface IEditPostInput {
 title: string;
 slug?: string | null;
+description?: string | null;
 image?: string | null;
 text?: string | null;
 categories?: Array<string> | null;

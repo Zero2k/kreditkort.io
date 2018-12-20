@@ -2,6 +2,8 @@ import { ResolverMap } from "../../../types/graphql-utils";
 import { Creditcard } from "../../../entity/Creditcard";
 import { getConnection } from "typeorm";
 
+import { parseMd } from "../../../utils/parseMd";
+
 export const resolvers: ResolverMap = {
   Company: {
     creditcards: async ({ id }, __, ___) => {
@@ -11,6 +13,9 @@ export const resolvers: ResolverMap = {
           name: "ASC"
         }
       });
+    },
+    markdown: async ({ about }, __, ___) => {
+      return parseMd(about);
     }
   }
 };

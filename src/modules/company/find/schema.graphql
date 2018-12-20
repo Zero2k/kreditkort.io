@@ -2,8 +2,16 @@ input FindCompanyInput {
   id: String!
 }
 
+input FindCompanyBySlugInput {
+  slug: String!
+}
+
 type Query {
   findCompany(
     input: FindCompanyInput
+  ): Company!
+
+  findCompanyBySlug(
+    input: FindCompanyBySlugInput
   ): Company!
 }

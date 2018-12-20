@@ -15,6 +15,16 @@ export const resolvers: ResolverMap = {
           name: "ASC"
         }
       });
+    },
+
+    findCompanyBySlug: async (
+      _,
+      { input: { slug } }: GQL.IFindCompanyBySlugOnQueryArguments,
+      ___
+    ) => {
+      return Company.findOne({
+        where: { slug }
+      });
     }
   }
 };

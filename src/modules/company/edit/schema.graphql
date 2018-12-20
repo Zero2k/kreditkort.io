@@ -1,5 +1,6 @@
 input EditCompanyInput {
   name: String!
+  slug: String
   logo: String
   website: String
   about: String

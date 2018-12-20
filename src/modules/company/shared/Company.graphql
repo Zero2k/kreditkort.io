@@ -1,8 +1,10 @@
 type Company {
   id: ID!
   name: String
+  slug: String
   logo: String
   website: String
   about: String
+  markdown: String
   creditcards: [Creditcard]!
 }
