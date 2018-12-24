@@ -1,4 +1,4 @@
-export const parseMd = text => {
+export const parseMd = (text: string) => {
   // ul
   text = text.replace(/^\s*\n\*/gm, "<ul>\n*");
   text = text.replace(/^(\*.+)\s*\n([^\*])/gm, "$1\n</ul>\n\n$2");

@@ -1,15 +1,17 @@
 {
    "compilerOptions": {
-      "lib": [
-         "es5",
-         "es6"
-      ],
-      "target": "es5",
+      "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
+      "target": "es6",
       "module": "commonjs",
       "moduleResolution": "node",
-      "outDir": "./build",
+      "sourceMap": true,
+      "rootDir": ".",
+      "outDir": "./dist",
+
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
-      "sourceMap": true
-   }
+      "skipLibCheck": true
+   },
+   "exclude": ["node_modules"],
+   "include": ["./src/**/*.tsx", "./src/**/*.ts"]
 }

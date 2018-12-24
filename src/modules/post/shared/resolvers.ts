@@ -9,7 +9,11 @@ export const resolvers: ResolverMap = {
       return new Date(createdAt).toISOString();
     },
     markdown: async ({ text }, __, ___) => {
-      return parseMd(text);
+      if (text) {
+        return parseMd(text);
+      }
+
+      return null;
     }
   }
 };

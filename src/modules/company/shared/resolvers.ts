@@ -15,7 +15,11 @@ export const resolvers: ResolverMap = {
       });
     },
     markdown: async ({ about }, __, ___) => {
-      return parseMd(about);
+      if (about) {
+        return parseMd(about);
+      }
+
+      return null;
     }
   }
 };
