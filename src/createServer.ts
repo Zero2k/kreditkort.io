@@ -25,7 +25,7 @@ export const createServer = async () => {
     },
     schema,
     context: ({ req, res }: any) => ({
-      redis,
+      /* redis, */
       session: req ? req.session : undefined,
       url: req ? req.protocol + "://" + req.get("host") : "",
       req,
@@ -36,7 +36,7 @@ export const createServer = async () => {
   const app = express();
   app.use("/static", express.static("public"));
 
-  app.use(
+  /* app.use(
     session({
       store: new RedisStore({
         client: redis as any,
@@ -52,7 +52,7 @@ export const createServer = async () => {
         maxAge: 1000 * 60 * 60 * 24 * 7
       }
     } as any)
-  );
+  ); */
 
   app.use(
     cors({
@@ -61,7 +61,17 @@ export const createServer = async () => {
     })
   );
 
-  await dbConnect();
+  let retries = 5;
+  while (retries) {
+    try {
+      await dbConnect();
+      break;
+    } catch (err) {
+      retries -= 1;
+      console.log(err);
+      await new Promise(resolve => setTimeout(resolve, 5000));
+    }
+  }
 
   apolloServer.applyMiddleware({
     app,
@@ -76,11 +86,6 @@ export const createServer = async () => {
   httpServer.listen(port, () => {
     console.log(
       `🚀 Server ready at http://localhost:${port}${apolloServer.graphqlPath}`
-    );
-    console.log(
-      `🚀 Subscriptions ready at ws://localhost:${port}${
-        apolloServer.subscriptionsPath
-      }`
     );
   });
 

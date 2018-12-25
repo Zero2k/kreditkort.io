@@ -1,6 +1,6 @@
 # Stage 1 - Build
 FROM node as builder
-WORKDIR /app
+WORKDIR /usr/app
 COPY package*.json ./
 RUN npm install
 COPY . .
@@ -8,17 +8,17 @@ RUN npm run build
 
 # Stage 2 - Run
 FROM node
-WORKDIR /app
+WORKDIR /usr/app
 COPY package*.json ./
 RUN npm install --production
 
-COPY --from=builder /app/dist ./dist
+COPY --from=builder /usr/app/dist .
 
-COPY ormconfig.json .
+COPY ormconfig.docker.json ./ormconfig.json
 COPY .env .
 
-ENV NODE_ENV production
+ENV NODE_ENV development
 
 EXPOSE 4000
 
-CMD node dist/src/index.js
+CMD node src/index.js

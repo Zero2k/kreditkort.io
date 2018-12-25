@@ -10,7 +10,6 @@ export const dbConnect = async () => {
   return process.env.NODE_ENV === "production"
     ? createConnection({
         ...connectionOptions,
-        url: process.env.DATABASE_URL,
         entities: [User, Company, Creditcard, Post],
         name: "default"
       } as any)
