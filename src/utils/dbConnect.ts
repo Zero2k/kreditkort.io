@@ -6,12 +6,10 @@ import { Creditcard } from "../entity/Creditcard";
 import { Post } from "../entity/Post";
 
 export const dbConnect = async () => {
-  const connectionOptions = await getConnectionOptions(process.env.NODE_ENV);
-  return process.env.NODE_ENV === "production"
-    ? createConnection({
+  const connectionOptions = await getConnectionOptions();
+  return createConnection({
         ...connectionOptions,
         entities: [User, Company, Creditcard, Post],
         name: "default"
-      } as any)
-    : createConnection({ ...connectionOptions, name: "default" });
+      } as any);
 };
