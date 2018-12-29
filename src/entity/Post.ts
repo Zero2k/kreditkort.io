@@ -5,8 +5,7 @@ import {
   BaseEntity,
   PrimaryGeneratedColumn,
   BeforeInsert,
-  ManyToOne,
-  OneToMany
+  ManyToOne
 } from "typeorm";
 import { User } from "./User";
 

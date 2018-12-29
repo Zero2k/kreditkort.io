@@ -5,7 +5,7 @@ export const resolvers: ResolverMap = {
   Query: {
     findCompany: async (
       _,
-      { input: { id } }: GQL.IFindCompanyOnQueryArguments,
+      { input: { id } },
       ___
     ) => {
       return Company.findOne({
@@ -18,7 +18,7 @@ export const resolvers: ResolverMap = {
 
     findCompanyBySlug: async (
       _,
-      { input: { slug } }: GQL.IFindCompanyBySlugOnQueryArguments,
+      { input: { slug } },
       ___
     ) => {
       return Company.findOne({

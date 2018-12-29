@@ -7,11 +7,9 @@ export const resolvers: ResolverMap = {
     editPost: async (
       _,
       { postId, input: { ...data } }: GQL.IEditPostOnMutationArguments,
-      { session }
+      ___
     ) => {
-      const {
-        raw: [newPost]
-      } = await getConnection()
+      await getConnection()
         .createQueryBuilder()
         .update(Post)
         .set(data)

@@ -7,12 +7,10 @@ export const resolvers: ResolverMap = {
     editCompany: async (
       _,
       { companyId, input: { ...data } }: GQL.IEditCompanyOnMutationArguments,
-      { session }
+      ___
     ) => {
       /* Check if user is Authenticated */
-      const {
-        raw: [newCompany]
-      } = await getConnection()
+      await getConnection()
         .createQueryBuilder()
         .update(Company)
         .set(data)

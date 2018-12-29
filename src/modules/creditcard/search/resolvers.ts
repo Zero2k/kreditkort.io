@@ -10,8 +10,8 @@ export const resolvers: ResolverMap = {
         input: { name, amount, card_types, check_uc, bad_credit },
         limit = 10,
         offset = 0
-      }: GQL.ISearchCreditcardOnQueryArguments,
-      __
+      },
+      ___
     ) => {
       let creditcardQB = getConnection()
         .getRepository(Creditcard)

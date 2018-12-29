@@ -1,5 +1,4 @@
 import { ResolverMap } from "../../../types/graphql-utils";
-import { Post } from "../../../entity/Post";
 
 import { parseMd } from "../../../utils/parseMd";
 

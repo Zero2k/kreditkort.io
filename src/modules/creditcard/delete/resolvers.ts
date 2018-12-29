@@ -6,7 +6,7 @@ export const resolvers: ResolverMap = {
     deleteCreditcard: async (
       _,
       { id }: GQL.IDeleteCreditcardOnMutationArguments,
-      { session }
+      ___
     ) => {
       const creditcard = await Creditcard.findOne({ where: { id } });
 

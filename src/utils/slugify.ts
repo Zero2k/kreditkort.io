@@ -47,13 +47,13 @@ export const slugify = (text: string) => {
     ",": "-",
     ":": "-",
     ";": "-"
-  };
+  } as any;
 
   return text
     .toString()
     .toLowerCase()
     .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(/./g, (target, index, str) => specialChars[target] || target) // Replace special characters using the hash map
+    .replace(/./g, (target) => specialChars[target] || target) // Replace special characters using the hash map
     .replace(/&/g, "-and-") // Replace & with 'and'
     .replace(/[^\w\-]+/g, "") // Remove all non-word chars
     .replace(/\-\-+/g, "-") // Replace multiple - with single -

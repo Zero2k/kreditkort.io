@@ -2,7 +2,6 @@ version: "3.7"
 services:
   db:
     image: postgres
-    restart: always
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
@@ -10,7 +9,7 @@ services:
     volumes:
       - ./pgdata:/var/lib/postgresql/data
     ports:
-      - '5500:5500'
+      - '5432:5432'
     
   server:
     image: dev-kreditkort-backend
@@ -18,6 +17,3 @@ services:
       - db
     ports:
       - '4000:4000'
-
-volumes:
-  pgdata:

@@ -7,11 +7,9 @@ export const resolvers: ResolverMap = {
     editCreditcard: async (
       _,
       { cardId, input: { ...data } }: GQL.IEditCreditcardOnMutationArguments,
-      { session }
+      ___
     ) => {
-      const {
-        raw: [newCreditcard]
-      } = await getConnection()
+      await getConnection()
         .createQueryBuilder()
         .update(Creditcard)
         .set(data)

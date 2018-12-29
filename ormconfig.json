@@ -7,15 +7,9 @@
   "database": "testdb",
   "synchronize": true,
   "logging": false,
-  "entities": [
-    "src/entity/**/*"
-  ],
-  "migrations": [
-    "src/migration/**/*"
-  ],
-  "subscribers": [
-    "src/subscriber/**/*"
-  ],
+  "entities": ["src/entity/**/*"],
+  "migrations": ["src/migration/**/*"],
+  "subscribers": ["src/subscriber/**/*"],
   "cli": {
     "entitiesDir": "src/entity",
     "migrationsDir": "src/migration",

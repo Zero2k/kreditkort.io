@@ -5,7 +5,7 @@ export const resolvers: ResolverMap = {
   Query: {
     findCreditcard: async (
       _,
-      { input: { id } }: GQL.IFindCreditcardOnQueryArguments,
+      { input: { id } },
       ___
     ) => {
       return Creditcard.findOne({
@@ -15,7 +15,7 @@ export const resolvers: ResolverMap = {
 
     findCreditcardBySlug: async (
       _,
-      { input: { slug } }: GQL.IFindCreditcardBySlugOnQueryArguments,
+      { input: { slug } },
       ___
     ) => {
       return Creditcard.findOne({
@@ -28,7 +28,7 @@ export const resolvers: ResolverMap = {
       {
         limit = 10,
         offset = 0
-      }: GQL.IFindCreditcardByLowestInterestOnQueryArguments,
+      },
       __
     ) => {
       return Creditcard.find({
@@ -45,7 +45,7 @@ export const resolvers: ResolverMap = {
       {
         limit = 10,
         offset = 0
-      }: GQL.IFindCreditcardByHighestCreditOnQueryArguments,
+      },
       __
     ) => {
       return Creditcard.find({
@@ -59,7 +59,7 @@ export const resolvers: ResolverMap = {
 
     findCreditcardWithoutFee: async (
       _,
-      { limit = 10, offset = 0 }: GQL.IFindCreditcardWithoutFeeOnQueryArguments,
+      { limit = 10, offset = 0 },
       __
     ) => {
       return Creditcard.find({

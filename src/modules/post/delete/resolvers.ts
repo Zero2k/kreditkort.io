@@ -6,7 +6,7 @@ export const resolvers: ResolverMap = {
     deletePost: async (
       _,
       { id }: GQL.IDeletePostOnMutationArguments,
-      { session }
+      ___
     ) => {
       const post = await Post.findOne({ where: { id } });
 

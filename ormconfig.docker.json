@@ -1,18 +1,18 @@
 {
   "type": "postgres",
   "host": "db",
-  "port": 5500,
+  "port": 5432,
   "username": "postgres",
   "password": "postgres",
   "database": "testdb",
   "synchronize": true,
-  "logging": false,
-  "entities": ["src/entity/**/*"],
-  "migrations": ["src/migration/**/*"],
-  "subscribers": ["src/subscriber/**/*"],
+  "logging": true,
+  "entities": ["dist/src/entity/**/*"],
+  "migrations": ["dist/src/migration/**/*"],
+  "subscribers": ["dist/src/subscriber/**/*"],
   "cli": {
-    "entitiesDir": "src/entity",
-    "migrationsDir": "src/migration",
-    "subscribersDir": "src/subscriber"
+    "entitiesDir": "dist/src/entity",
+    "migrationsDir": "dist/src/migration",
+    "subscribersDir": "dist/src/subscriber"
   }
 }

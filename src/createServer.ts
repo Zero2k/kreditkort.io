@@ -4,16 +4,16 @@ import { ApolloServer } from "apollo-server-express";
 import { applyMiddleware } from "graphql-middleware";
 import * as express from "express";
 import * as session from "express-session";
-import * as connectRedis from "connect-redis";
+/* import * as connectRedis from "connect-redis"; */
 import * as cors from "cors";
 import * as http from "http";
 
 import { dbConnect } from "./utils/dbConnect";
 import { createSchema } from "./utils/createSchema";
 import { middleware } from "./middleware";
-import { redis } from "./redis";
+/* import { redis } from "./redis"; */
 
-const RedisStore = connectRedis(session as any);
+/* const RedisStore = connectRedis(session as any); */
 
 export const createServer = async () => {
   const schema = createSchema() as any;
@@ -36,12 +36,12 @@ export const createServer = async () => {
   const app = express();
   app.use("/static", express.static("public"));
 
-  /* app.use(
+  app.use(
     session({
-      store: new RedisStore({
+      /* store: new RedisStore({
         client: redis as any,
         prefix: "sess:"
-      }),
+      }), */
       name: "qid",
       secret: process.env.SESSION_SECRET,
       resave: false,
@@ -52,7 +52,7 @@ export const createServer = async () => {
         maxAge: 1000 * 60 * 60 * 24 * 7
       }
     } as any)
-  ); */
+  );
 
   app.use(
     cors({
@@ -61,17 +61,7 @@ export const createServer = async () => {
     })
   );
 
-  let retries = 5;
-  while (retries) {
-    try {
-      await dbConnect();
-      break;
-    } catch (err) {
-      retries -= 1;
-      console.log(err);
-      await new Promise(resolve => setTimeout(resolve, 5000));
-    }
-  }
+  await dbConnect();
 
   apolloServer.applyMiddleware({
     app,

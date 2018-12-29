@@ -1,6 +1,5 @@
 import { ResolverMap } from "../../../types/graphql-utils";
 import { Creditcard } from "../../../entity/Creditcard";
-import { getConnection } from "typeorm";
 
 import { parseMd } from "../../../utils/parseMd";
 

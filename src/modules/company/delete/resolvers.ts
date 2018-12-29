@@ -3,7 +3,7 @@ import { Company } from "../../../entity/Company";
 
 export const resolvers: ResolverMap = {
   Mutation: {
-    deleteCompany: async (_, { id }, { session }) => {
+    deleteCompany: async (_, { id }, ___) => {
       const company = await Company.findOne({ where: { id } });
 
       if (!company) {

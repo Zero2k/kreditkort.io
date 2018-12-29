@@ -1,4 +1,4 @@
-import { ResolverMap, Context } from "../../../types/graphql-utils";
+import { ResolverMap } from "../../../types/graphql-utils";
 import { Post } from "../../../entity/Post";
 
 export const resolvers: ResolverMap = {
@@ -15,7 +15,7 @@ export const resolvers: ResolverMap = {
         throw new Error("post already exists");
       }
 
-      const post = await Post.create({
+      await Post.create({
         ...data,
         userId: session.userId
       }).save();

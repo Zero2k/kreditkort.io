@@ -10,8 +10,8 @@ export const resolvers: ResolverMap = {
         input: { name },
         limit = 10,
         offset = 0
-      }: GQL.ISearchCompanyOnQueryArguments,
-      __
+      },
+      ___
     ) => {
       let companydQB = getConnection()
         .getRepository(Company)

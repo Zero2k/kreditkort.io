@@ -10,7 +10,7 @@ export const resolvers: ResolverMap = {
         input: { query, categories },
         limit = 10,
         offset = 0
-      }: GQL.ISearchPostOnQueryArguments,
+      },
       __
     ) => {
       let postQB = getConnection()
@@ -22,7 +22,7 @@ export const resolvers: ResolverMap = {
           {
             query: query
               .split(" ")
-              .map(value => `%${value}%`)
+              .map((value: any) => `%${value}%`)
               .join("")
           }
         );

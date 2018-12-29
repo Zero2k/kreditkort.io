@@ -8,8 +8,8 @@ export const resolvers: ResolverMap = {
       { input: { ...data } }: GQL.ICreateCompanyOnMutationArguments,
       { session }
     ) => {
-      const company = await Company.create({
-        ...data,
+      await Company.create({
+        ...data as any,
         userId: session.userId
       }).save();
 

@@ -5,7 +5,7 @@ export const resolvers: ResolverMap = {
   Query: {
     findPost: async (
       _,
-      { input: { id } }: GQL.IFindPostOnQueryArguments,
+      { input: { id } },
       ___
     ) => {
       return Post.findOne({
@@ -15,7 +15,7 @@ export const resolvers: ResolverMap = {
 
     findPostBySlug: async (
       _,
-      { input: { slug } }: GQL.IFindPostBySlugOnQueryArguments,
+      { input: { slug } },
       ___
     ) => {
       return Post.findOne({
