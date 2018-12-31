@@ -4,16 +4,16 @@ import { ApolloServer } from "apollo-server-express";
 import { applyMiddleware } from "graphql-middleware";
 import * as express from "express";
 import * as session from "express-session";
-/* import * as connectRedis from "connect-redis"; */
+import * as connectRedis from "connect-redis";
 import * as cors from "cors";
 import * as http from "http";
 
 import { dbConnect } from "./utils/dbConnect";
 import { createSchema } from "./utils/createSchema";
 import { middleware } from "./middleware";
-/* import { redis } from "./redis"; */
+import { redis } from "./redis";
 
-/* const RedisStore = connectRedis(session as any); */
+const RedisStore = connectRedis(session as any);
 
 export const createServer = async () => {
   const schema = createSchema() as any;
@@ -25,7 +25,7 @@ export const createServer = async () => {
     },
     schema,
     context: ({ req, res }: any) => ({
-      /* redis, */
+      redis,
       session: req ? req.session : undefined,
       url: req ? req.protocol + "://" + req.get("host") : "",
       req,
@@ -38,17 +38,18 @@ export const createServer = async () => {
 
   app.use(
     session({
-      /* store: new RedisStore({
+      store: new RedisStore({
         client: redis as any,
         prefix: "sess:"
-      }), */
+      }),
       name: "qid",
       secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
       cookie: {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        /* REQUIRES SSL */
+        /* secure: process.env.NODE_ENV === "production", */
         maxAge: 1000 * 60 * 60 * 24 * 7
       }
     } as any)

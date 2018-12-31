@@ -17,5 +17,7 @@ COPY --from=builder /usr/app/dist ./dist
 COPY ormconfig.docker.json ./ormconfig.json
 COPY .env .
 
+ENV NODE_ENV production
+
 EXPOSE 4000
 CMD node dist/src/index.js
