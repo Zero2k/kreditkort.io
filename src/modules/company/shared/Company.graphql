@@ -6,5 +6,8 @@ type Company {
   website: String
   about: String
   markdown: String
-  creditcards: [Creditcard]!
+  creditcards(
+    offset: Int
+    limit: Int
+  ): [Creditcard]!
 }

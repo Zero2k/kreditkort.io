@@ -5,12 +5,18 @@ import { parseMd } from "../../../utils/parseMd";
 
 export const resolvers: ResolverMap = {
   Company: {
-    creditcards: async ({ id }, __, ___) => {
+    creditcards: async ({ id }, 
+      {
+        limit = 10,
+        offset = 0
+      }, ___) => {
       return Creditcard.find({
         where: { companyId: id },
         order: {
           name: "ASC"
-        }
+        },
+        skip: offset,
+        take: limit
       });
     },
     markdown: async ({ about }, __, ___) => {

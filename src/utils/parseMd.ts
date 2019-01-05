@@ -1,13 +1,13 @@
 export const parseMd = (text: string) => {
   // ul
-  text = text.replace(/^\s*\n\*/gm, "<ul>\n*");
-  text = text.replace(/^(\*.+)\s*\n([^\*])/gm, "$1\n</ul>\n\n$2");
-  text = text.replace(/^\*(.+)/gm, "<li>$1</li>");
+  //text = text.replace(/^\s*\n\*/gm, "<ul>\n*");
+  //text = text.replace(/^(\*.+)\s*\n([^\*])/gm, "$1\n</ul>\n\n$2");
+  //text = text.replace(/^\*(.+)/gm, "<li>$1</li>");
 
   // ol
-  text = text.replace(/^\s*\n\d\./gm, "<ol>\n1.");
-  text = text.replace(/^(\d\..+)\s*\n([^\d\.])/gm, "$1\n</ol>\n\n$2");
-  text = text.replace(/^\d\.(.+)/gm, "<li>$1</li>");
+  //text = text.replace(/^\s*\n\d\./gm, "<ol>\n1.");
+  //text = text.replace(/^(\d\..+)\s*\n([^\d\.])/gm, "$1\n</ol>\n\n$2");
+  //text = text.replace(/^\d\.(.+)/gm, "<li>$1</li>");
 
   // blockquote
   text = text.replace(/^\>(.+)/gm, "<blockquote>$1</blockquote>");
