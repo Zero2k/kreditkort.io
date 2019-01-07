@@ -1,0 +1,11 @@
+type Files {
+    filePath: String
+    name: String
+    isFileBoolean: Boolean
+}
+
+type Media {
+    filePath: String
+    isFileBoolean: Boolean
+    files: [Files]
+}
