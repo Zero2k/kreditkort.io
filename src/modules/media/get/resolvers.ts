@@ -3,6 +3,7 @@ import * as bluebird from 'bluebird';
 import * as path from "path";
 
 interface IDirectory{
+    directory: string;
     filePath: string|undefined;
     files: [string];
 }
@@ -25,6 +26,7 @@ export const resolvers: ResolverMap = {
                     const fullPath = `${dir}/${fileName}`;
                     const directory = {} as IDirectory
     
+                    directory.directory = fileName;
                     directory.filePath = `${'static'}/${fullPath.split("/public/").pop()}`;
                     directory.files = await fsPromise.readdirAsync(fullPath).map(async (fileName: string) => {
                         const filePath = `${fullPath}/${fileName}`;

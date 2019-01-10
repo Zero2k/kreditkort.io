@@ -4,6 +4,7 @@ type Files {
 }
 
 type Media {
+    directory: String
     filePath: String
     files: [Files]
 }
