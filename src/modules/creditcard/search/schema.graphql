@@ -1,6 +1,7 @@
 input SearchCreditcardInput {
   name: String
   amount: Int
+  interest: Int
   card_types: String
   check_uc: Boolean
   bad_credit: Boolean

@@ -7,7 +7,7 @@ export const resolvers: ResolverMap = {
     searchCreditcard: async (
       _,
       {
-        input: { name, amount, card_types, check_uc, bad_credit },
+        input: { name, amount, interest, card_types, check_uc, bad_credit },
         limit = 10,
         offset = 0
       },
@@ -24,6 +24,11 @@ export const resolvers: ResolverMap = {
       if (amount) {
         creditcardQB = creditcardQB.andWhere("card.amount_min >= :amount", {
           amount
+        });
+      }
+      if (interest) {
+        creditcardQB = creditcardQB.andWhere("card.interest <= :interest", {
+          interest
         });
       }
       if (card_types) {

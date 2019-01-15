@@ -31,6 +31,7 @@ findCreditcardByLowestInterest: Array<ICreditcard>;
 findCreditcardByHighestCredit: Array<ICreditcard>;
 findCreditcardWithoutFee: Array<ICreditcard>;
 searchCreditcard: Array<ICreditcard>;
+getFiles: Array<IMedia | null> | null;
 findPost: IPost;
 findPostBySlug: IPost;
 searchPost: Array<IPost>;
@@ -110,6 +111,11 @@ markdown: string | null;
 creditcards: Array<ICreditcard | null>;
 }
 
+interface ICreditcardsOnCompanyArguments {
+offset?: number | null;
+limit?: number | null;
+}
+
 interface ICreditcard {
 __typename: "Creditcard";
 id: string;
@@ -159,9 +165,23 @@ slug: string;
 interface ISearchCreditcardInput {
 name?: string | null;
 amount?: number | null;
+interest?: number | null;
 card_types?: string | null;
 check_uc?: boolean | null;
 bad_credit?: boolean | null;
+}
+
+interface IMedia {
+__typename: "Media";
+directory: string | null;
+filePath: string | null;
+files: Array<IFiles | null> | null;
+}
+
+interface IFiles {
+__typename: "Files";
+filePath: string | null;
+name: string | null;
 }
 
 interface IFindPostInput {

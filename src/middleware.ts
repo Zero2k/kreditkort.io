@@ -16,5 +16,8 @@ export const middleware = {
   Mutation: {
     createCreditcard: isAuthenticated,
     createCompany: isAuthenticated
+  },
+  Query: {
+    getFiles: isAuthenticated
   }
 };
