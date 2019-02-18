@@ -1,5 +1,6 @@
 import { ResolverMap } from "../../../types/graphql-utils";
 import { Creditcard } from "../../../entity/Creditcard";
+import { Company } from "../../../entity/Company";
 import { getConnection } from "typeorm";
 
 export const resolvers: ResolverMap = {
@@ -15,9 +16,10 @@ export const resolvers: ResolverMap = {
     ) => {
       let creditcardQB = getConnection()
         .getRepository(Creditcard)
-        .createQueryBuilder("card");
+        .createQueryBuilder("card")
+        .leftJoinAndSelect(Company, "company", "company.id = card.companyId");
       if (name) {
-        creditcardQB = creditcardQB.andWhere("card.name ilike :name", {
+        creditcardQB = creditcardQB.andWhere("company.name ilike :name", {
           name: `%${name}%`
         });
       }
