@@ -46,7 +46,8 @@ export const slugify = (text: string) => {
     _: "-",
     ",": "-",
     ":": "-",
-    ";": "-"
+    ";": "-",
+    "+": "-plus-"
   } as any;
 
   return text

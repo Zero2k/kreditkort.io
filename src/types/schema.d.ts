@@ -30,6 +30,7 @@ findCreditcardBySlug: ICreditcard;
 findCreditcardByLowestInterest: Array<ICreditcard>;
 findCreditcardByHighestCredit: Array<ICreditcard>;
 findCreditcardWithoutFee: Array<ICreditcard>;
+findCreditcardInterestFree: Array<ICreditcard>;
 searchCreditcard: Array<ICreditcard>;
 getFiles: Array<IMedia | null> | null;
 findPost: IPost;
@@ -71,6 +72,11 @@ limit?: number | null;
 }
 
 interface IFindCreditcardWithoutFeeOnQueryArguments {
+offset?: number | null;
+limit?: number | null;
+}
+
+interface IFindCreditcardInterestFreeOnQueryArguments {
 offset?: number | null;
 limit?: number | null;
 }
@@ -131,6 +137,7 @@ amount_max: number | null;
 exchange_rate: number | null;
 annual_fee: number | null;
 withdrawal_fee: number | null;
+administration_fee: number | null;
 age: number | null;
 features: Array<string> | null;
 advantages: Array<string> | null;
@@ -309,6 +316,7 @@ amount_max?: number | null;
 exchange_rate?: number | null;
 annual_fee?: number | null;
 withdrawal_fee?: number | null;
+administration_fee?: number | null;
 age?: number | null;
 features?: Array<string> | null;
 advantages?: Array<string> | null;
@@ -336,6 +344,7 @@ amount_max?: number | null;
 exchange_rate?: number | null;
 annual_fee?: number | null;
 withdrawal_fee?: number | null;
+administration_fee?: number | null;
 age?: number | null;
 features?: Array<string> | null;
 advantages?: Array<string> | null;

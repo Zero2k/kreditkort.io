@@ -72,6 +72,21 @@ export const resolvers: ResolverMap = {
         skip: offset,
         take: limit
       });
+    },
+
+    findCreditcardInterestFree: async (
+      _,
+      { limit = 10, offset = 0 },
+      __
+    ) => {
+      return Creditcard.find({
+        order: {
+          interest_free: "DESC",
+          interest: "ASC"
+        },
+        skip: offset,
+        take: limit
+      });
     }
   }
 };

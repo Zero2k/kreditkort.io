@@ -29,4 +29,9 @@ type Query {
     offset: Int
     limit: Int
   ): [Creditcard!]!
+
+  findCreditcardInterestFree(
+    offset: Int
+    limit: Int
+  ): [Creditcard!]!
 }
