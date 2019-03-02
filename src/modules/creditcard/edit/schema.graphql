@@ -11,7 +11,7 @@ input EditCreditcardInput {
   exchange_rate: Float
   annual_fee: Int
   withdrawal_fee: Float
-  administration_fee: Int
+  administration_fee: String
   age: Int
   features: [String!]
   advantages: [String!]
