@@ -13,7 +13,7 @@ export const resolvers: ResolverMap = {
       return Creditcard.find({
         where: { companyId: id },
         order: {
-          name: "ASC"
+          interest: "ASC"
         },
         skip: offset,
         take: limit

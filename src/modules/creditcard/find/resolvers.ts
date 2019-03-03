@@ -87,6 +87,23 @@ export const resolvers: ResolverMap = {
         skip: offset,
         take: limit
       });
+    },
+
+    findCreditcardWithoutWithdrawalFee: async (
+      _,
+      { limit = 10, offset = 0 },
+      __
+    ) => {
+      return Creditcard.find({
+        where: {
+          withdrawal_fee: 0
+        },
+        order: {
+          interest: "ASC"
+        },
+        skip: offset,
+        take: limit
+      });
     }
   }
 };

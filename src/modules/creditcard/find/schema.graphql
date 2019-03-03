@@ -34,4 +34,9 @@ type Query {
     offset: Int
     limit: Int
   ): [Creditcard!]!
+
+  findCreditcardWithoutWithdrawalFee(
+    offset: Int
+    limit: Int
+  ): [Creditcard!]!
 }
