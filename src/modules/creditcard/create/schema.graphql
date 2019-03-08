@@ -2,6 +2,7 @@ input CreateCreditcardInput {
   companyId: ID!
   name: String!
   logo: String
+  label: String
   information: String
   url: String
   interest: Float

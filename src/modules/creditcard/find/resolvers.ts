@@ -1,5 +1,6 @@
 import { ResolverMap } from "../../../types/graphql-utils";
 import { Creditcard } from "../../../entity/Creditcard";
+import { getConnection } from "typeorm";
 
 export const resolvers: ResolverMap = {
   Query: {
@@ -104,6 +105,43 @@ export const resolvers: ResolverMap = {
         skip: offset,
         take: limit
       });
+    },
+
+    findCreditcardWithoutExchangeFee: async (
+      _,
+      { limit = 10, offset = 0 },
+      __
+    ) => {
+      return Creditcard.find({
+        where: {
+          exchange_rate: 0
+        },
+        order: {
+          interest: "ASC"
+        },
+        skip: offset,
+        take: limit
+      });
+    },
+
+    findCreditcardWithMostInsurances: async (
+      _,
+      { limit = 10, offset = 0 },
+      __
+    ) => {
+      let creditcardQB = getConnection()
+      .getRepository(Creditcard)
+      .createQueryBuilder("card")
+
+      creditcardQB.addSelect("array_length(card.insurances, 1) as count")
+      creditcardQB.andWhere("array_length(card.insurances, 1) > 0")
+
+      return creditcardQB
+      .take(limit)
+      .skip(offset)
+      .groupBy("card.id")
+      .orderBy("count", "DESC")
+      .getMany();
     }
   }
 };

@@ -2,6 +2,7 @@ input EditCreditcardInput {
   name: String!
   slug: String
   logo: String
+  label: String
   information: String
   url: String
   interest: Float

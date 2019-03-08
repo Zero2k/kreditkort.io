@@ -26,6 +26,9 @@ export class Creditcard extends BaseEntity {
   logo: string;
 
   @Column("text", { nullable: true })
+  label: string;
+
+  @Column("text", { nullable: true })
   information: string;
 
   @Column("varchar", { length: 255 })

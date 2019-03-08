@@ -39,4 +39,14 @@ type Query {
     offset: Int
     limit: Int
   ): [Creditcard!]!
+
+  findCreditcardWithoutExchangeFee(
+    offset: Int
+    limit: Int
+  ): [Creditcard!]!
+
+  findCreditcardWithMostInsurances(
+    offset: Int
+    limit: Int
+  ): [Creditcard!]!
 }

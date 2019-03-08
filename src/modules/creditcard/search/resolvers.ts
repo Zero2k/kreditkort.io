@@ -8,7 +8,7 @@ export const resolvers: ResolverMap = {
     searchCreditcard: async (
       _,
       {
-        input: { name, amount, interest, card_types, check_uc, bad_credit },
+        input: { name, amount, label, interest, card_types, check_uc, bad_credit },
         limit = 10,
         offset = 0
       },
@@ -23,6 +23,11 @@ export const resolvers: ResolverMap = {
           name: `%${name}%`
         });
       }
+      if (label) {
+        creditcardQB = creditcardQB.andWhere("card.label like :label", {
+          label
+        });
+      }
       if (amount) {
         creditcardQB = creditcardQB.andWhere("card.amount_min >= :amount", {
           amount
@@ -34,10 +39,19 @@ export const resolvers: ResolverMap = {
         });
       }
       if (card_types) {
-        creditcardQB = creditcardQB.andWhere(
-          ":card_types = ANY(card.card_types)",
-          { card_types }
-        );
+        if (card_types === "resekort") {
+          creditcardQB = creditcardQB.andWhere(
+            ":card_types = ANY(card.card_types)",
+            { card_types }
+          );
+          creditcardQB.andWhere("card.exchange_rate > 0")
+          creditcardQB.orderBy("card.exchange_rate", "ASC")
+        } else {
+          creditcardQB = creditcardQB.andWhere(
+            ":card_types = ANY(card.card_types)",
+            { card_types }
+          );
+        }
       }
       if (check_uc) {
         creditcardQB = creditcardQB.andWhere("card.check_uc = :check_uc", {

@@ -32,6 +32,8 @@ findCreditcardByHighestCredit: Array<ICreditcard>;
 findCreditcardWithoutFee: Array<ICreditcard>;
 findCreditcardInterestFree: Array<ICreditcard>;
 findCreditcardWithoutWithdrawalFee: Array<ICreditcard>;
+findCreditcardWithoutExchangeFee: Array<ICreditcard>;
+findCreditcardWithMostInsurances: Array<ICreditcard>;
 searchCreditcard: Array<ICreditcard>;
 getFiles: Array<IMedia | null> | null;
 findPost: IPost;
@@ -87,6 +89,16 @@ offset?: number | null;
 limit?: number | null;
 }
 
+interface IFindCreditcardWithoutExchangeFeeOnQueryArguments {
+offset?: number | null;
+limit?: number | null;
+}
+
+interface IFindCreditcardWithMostInsurancesOnQueryArguments {
+offset?: number | null;
+limit?: number | null;
+}
+
 interface ISearchCreditcardOnQueryArguments {
 input?: ISearchCreditcardInput | null;
 offset?: number | null;
@@ -134,6 +146,7 @@ id: string;
 name: string;
 slug: string | null;
 logo: string | null;
+label: string | null;
 information: string | null;
 url: string | null;
 interest: number | null;
@@ -178,6 +191,7 @@ slug: string;
 interface ISearchCreditcardInput {
 name?: string | null;
 amount?: number | null;
+label?: string | null;
 interest?: number | null;
 card_types?: string | null;
 check_uc?: boolean | null;
@@ -313,6 +327,7 @@ interface ICreateCreditcardInput {
 companyId: string;
 name: string;
 logo?: string | null;
+label?: string | null;
 information?: string | null;
 url?: string | null;
 interest?: number | null;
@@ -341,6 +356,7 @@ interface IEditCreditcardInput {
 name: string;
 slug?: string | null;
 logo?: string | null;
+label?: string | null;
 information?: string | null;
 url?: string | null;
 interest?: number | null;
