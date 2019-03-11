@@ -5,6 +5,7 @@ type Creditcard {
   logo: String
   label: String
   information: String
+  markdown: String
   url: String
   interest: Float
   interest_free: Int

@@ -36,6 +36,7 @@ findCreditcardWithoutExchangeFee: Array<ICreditcard>;
 findCreditcardWithMostInsurances: Array<ICreditcard>;
 searchCreditcard: Array<ICreditcard>;
 getFiles: Array<IMedia | null> | null;
+uploads: Array<IFile | null> | null;
 findPost: IPost;
 findPostBySlug: IPost;
 searchPost: Array<IPost>;
@@ -148,6 +149,7 @@ slug: string | null;
 logo: string | null;
 label: string | null;
 information: string | null;
+markdown: string | null;
 url: string | null;
 interest: number | null;
 interest_free: number | null;
@@ -211,6 +213,12 @@ filePath: string | null;
 name: string | null;
 }
 
+interface IFile {
+__typename: "File";
+filename: string;
+path: string;
+}
+
 interface IFindPostInput {
 id: string;
 }
@@ -251,6 +259,8 @@ editCompany: boolean;
 createCreditcard: boolean;
 deleteCreditcard: boolean;
 editCreditcard: boolean;
+addMedia: IFile;
+removeMedia: boolean | null;
 createPost: boolean;
 deletePost: boolean;
 editPost: boolean;
@@ -283,6 +293,16 @@ id: string;
 interface IEditCreditcardOnMutationArguments {
 cardId: string;
 input: IEditCreditcardInput;
+}
+
+interface IAddMediaOnMutationArguments {
+file: any;
+directory: string;
+}
+
+interface IRemoveMediaOnMutationArguments {
+file: string;
+directory: string;
 }
 
 interface ICreatePostOnMutationArguments {

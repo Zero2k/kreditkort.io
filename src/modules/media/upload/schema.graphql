@@ -1,0 +1,15 @@
+scalar Upload
+
+type File {
+    filename: String!
+    path: String!
+}
+
+type Query {
+    uploads: [File]
+}
+
+type Mutation {
+    addMedia(file: Upload!, directory: String!): File!
+    removeMedia(file: String!, directory: String!): Boolean
+}
