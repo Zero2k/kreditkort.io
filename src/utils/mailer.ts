@@ -1,27 +1,26 @@
-const nodemailer = require('nodemailer')
+const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  service: "gmail",
   auth: {
-    user: '',
-    pass: '',
-  },
+    user: "",
+    pass: ""
+  }
 });
 
-const send = ({ email, name, text }: any) => {
+const send = ({ email, name, text }: any): Promise<any> => {
   const from = name && email ? `${name} <${email}>` : `${name || email}`;
   const message = {
     from,
-    to: 'info@kreditkarma.se',
+    to: "info@kreditkarma.se",
     subject: `Nytt meddelande från ${from} | kreditkarma.se`,
     text,
-    replyTo: from,
+    replyTo: from
   };
 
   return new Promise((resolve, reject) => {
-    transporter.sendMail(
-      message,
-      (error: any, info: any) => (error ? reject(error) : resolve(info)),
+    transporter.sendMail(message, (error: any, info: any) =>
+      error ? reject(error) : resolve(info)
     );
   });
 };

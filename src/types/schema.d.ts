@@ -256,6 +256,7 @@ __typename: "Mutation";
 createCompany: boolean;
 deleteCompany: boolean;
 editCompany: boolean;
+contact: boolean;
 createCreditcard: boolean;
 deleteCreditcard: boolean;
 editCreditcard: boolean;
@@ -280,6 +281,12 @@ id: string;
 interface IEditCompanyOnMutationArguments {
 companyId: string;
 input: IEditCompanyInput;
+}
+
+interface IContactOnMutationArguments {
+name: string;
+email: string;
+message: string;
 }
 
 interface ICreateCreditcardOnMutationArguments {
