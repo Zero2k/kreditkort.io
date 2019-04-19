@@ -14,8 +14,21 @@ const isAuthenticated = async (
 
 export const middleware = {
   Mutation: {
+    /* Creditcard */
     createCreditcard: isAuthenticated,
-    createCompany: isAuthenticated
+    deleteCreditcard: isAuthenticated,
+    editCreditcard: isAuthenticated,
+    /* Comapny */
+    createCompany: isAuthenticated,
+    deleteCompany: isAuthenticated,
+    editCompany: isAuthenticated,
+    /* Media */
+    addMedia: isAuthenticated,
+    removeMedia: isAuthenticated,
+    /* Post */
+    createPost: isAuthenticated,
+    deletePost: isAuthenticated,
+    editPost: isAuthenticated
   },
   Query: {
     getFiles: isAuthenticated
