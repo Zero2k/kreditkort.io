@@ -1,10 +1,15 @@
-import { getConnectionOptions ,createConnection } from "typeorm";
+import { getConnectionOptions, createConnection } from "typeorm";
 
 export const dbConnect = async (retry = 10) => {
   while (retry) {
     try {
       const connectionOptions = await getConnectionOptions();
-      await createConnection({ ...connectionOptions });
+      process.env.NODE_ENV === "production"
+        ? await createConnection({
+            ...connectionOptions,
+            url: process.env.DATABASE_URL
+          } as any)
+        : await createConnection({ ...connectionOptions });
       break;
     } catch (err) {
       console.log(err);

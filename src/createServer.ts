@@ -12,7 +12,7 @@ import { dbConnect } from "./utils/dbConnect";
 import { createSchema } from "./utils/createSchema";
 import { middleware } from "./middleware";
 import { redis } from "./redis";
-import mailer from './utils/mailer';
+import mailer from "./utils/mailer";
 
 const RedisStore = connectRedis(session as any);
 
@@ -25,6 +25,8 @@ export const createServer = async () => {
       path: "/"
     },
     schema,
+    introspection: true,
+    playground: true,
     context: ({ req, res }: any) => ({
       redis,
       session: req ? req.session : undefined,
@@ -63,16 +65,18 @@ export const createServer = async () => {
     })
   );
 
-  app.post('/contact', (req) => {
-    const { email = '', name = '', text = '' } = req.body;
-  
+  app.post("/contact", req => {
+    const { email = "", name = "", text = "" } = req.body;
+
     mailer({ email, name, text })
       .then(() => {
         console.log(`Sent the message "${text}" from <${name}> ${email}.`);
       })
-      .catch((error) => {
-        console.log(`Failed to send the message "${text}" from <${name}> ${email} with the error ${error &&
-            error.message}`);
+      .catch(error => {
+        console.log(
+          `Failed to send the message "${text}" from <${name}> ${email} with the error ${error &&
+            error.message}`
+        );
       });
   });
 
