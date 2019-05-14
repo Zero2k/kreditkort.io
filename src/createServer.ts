@@ -53,6 +53,7 @@ export const createServer = async () => {
         httpOnly: true,
         /* REQUIRES SSL */
         /* secure: process.env.NODE_ENV === "production", */
+        secure: false,
         maxAge: 1000 * 60 * 60 * 24 * 7
       }
     } as any)
