@@ -3,6 +3,6 @@ import { User } from "../../../entity/User";
 
 export const resolvers: ResolverMap = {
   Query: {
-    me: (_, __, { session }) => User.findOne({ where: { id: session.userId } })
+    me: async (_, __, { session }) => await User.findOne({ where: { id: session.userId } })
   }
 };
