@@ -53,8 +53,11 @@ export class Creditcard extends BaseEntity {
   @Column("double precision", { nullable: true })
   withdrawal_fee: number;
 
+  @Column("int", { nullable: true })
+  administration_fee: number;
+
   @Column("text", { nullable: true })
-  administration_fee: string;
+  administration_fee_text: string;
 
   @Column("int")
   age: number;

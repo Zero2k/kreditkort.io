@@ -12,7 +12,8 @@ input CreateCreditcardInput {
   exchange_rate: Float
   annual_fee: Int
   withdrawal_fee: Float
-  administration_fee: String
+  administration_fee: Int
+  administration_fee_text: String
   age: Int
   features: [String!]
   advantages: [String!]
