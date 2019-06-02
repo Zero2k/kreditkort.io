@@ -1,0 +1,11 @@
+input SearchUserInput {
+  email: String
+}
+
+type Query {
+  searchUser(
+    input: SearchUserInput
+    offset: Int
+    limit: Int
+  ): [User!]!
+}

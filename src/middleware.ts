@@ -28,9 +28,14 @@ export const middleware = {
     /* Post */
     createPost: isAuthenticated,
     deletePost: isAuthenticated,
-    editPost: isAuthenticated
+    editPost: isAuthenticated,
+    /* User */
+    deleteUser: isAuthenticated
   },
   Query: {
+    /* User */
+    searchUser: isAuthenticated,
+    /* Media */
     getFiles: isAuthenticated
   }
 };

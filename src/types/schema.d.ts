@@ -41,6 +41,7 @@ findPost: IPost;
 findPostBySlug: IPost;
 searchPost: Array<IPost>;
 me: IUser | null;
+searchUser: Array<IUser>;
 }
 
 interface IFindCompanyOnQueryArguments {
@@ -116,6 +117,12 @@ input?: IFindPostBySlugInput | null;
 
 interface ISearchPostOnQueryArguments {
 input?: ISearchPostInput | null;
+offset?: number | null;
+limit?: number | null;
+}
+
+interface ISearchUserOnQueryArguments {
+input?: ISearchUserInput | null;
 offset?: number | null;
 limit?: number | null;
 }
@@ -252,6 +259,10 @@ id: string;
 email: string;
 }
 
+interface ISearchUserInput {
+email?: string | null;
+}
+
 interface IMutation {
 __typename: "Mutation";
 createCompany: boolean;
@@ -266,6 +277,7 @@ removeMedia: boolean | null;
 createPost: boolean;
 deletePost: boolean;
 editPost: boolean;
+deleteUser: boolean;
 login: ILoginResponse;
 logout: boolean | null;
 register: Array<IError> | null;
@@ -324,6 +336,10 @@ id: string;
 interface IEditPostOnMutationArguments {
 postId: string;
 input: IEditPostInput;
+}
+
+interface IDeleteUserOnMutationArguments {
+id: string;
 }
 
 interface ILoginOnMutationArguments {
