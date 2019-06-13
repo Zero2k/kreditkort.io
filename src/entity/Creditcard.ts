@@ -80,6 +80,9 @@ export class Creditcard extends BaseEntity {
   @Column("text", { array: true, nullable: true })
   insurances: string[];
 
+  @Column("text", { nullable: true })
+  offer: string;
+
   @Column("text", { array: true, nullable: true })
   card_types: string[];
 

@@ -23,6 +23,7 @@ type Creditcard {
   bonuses: [String!]
   traveling: [String!]
   insurances: [String!]
+  offer: String
   card_types: [String!]
   require_income: Boolean
   check_uc: Boolean
