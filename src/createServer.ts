@@ -7,6 +7,7 @@ import * as session from "express-session";
 import * as connectRedis from "connect-redis";
 import * as cors from "cors";
 import * as http from "http";
+import * as path from "path";
 
 import { dbConnect } from "./utils/dbConnect";
 import { createSchema } from "./utils/createSchema";
@@ -21,11 +22,9 @@ export const createServer = async () => {
 
   const apolloServer = new ApolloServer({
     subscriptions: {
-      path: "/"
+      path: "/subscriptions"
     },
     schema,
-    introspection: true,
-    playground: false,
     context: ({ req, res }: any) => ({
       redis,
       session: req ? req.session : undefined,
@@ -36,7 +35,13 @@ export const createServer = async () => {
   });
 
   const app = express();
-  app.use("/static", express.static("public"));
+
+  app.use(
+    cors({
+      credentials: true,
+      origin: process.env.FRONTEND_HOST
+    })
+  );
 
   app.use(
     session({
@@ -58,19 +63,14 @@ export const createServer = async () => {
     } as any)
   );
 
-  app.use(
-    cors({
-      credentials: true,
-      origin: process.env.FRONTEND_HOST
-    })
-  );
+  app.use("/static", express.static(path.resolve(__dirname, "../public")));
 
   await dbConnect();
 
   apolloServer.applyMiddleware({
     app,
     cors: false,
-    path: "/"
+    path: "/graphql"
   });
 
   const port = process.env.SERVER_PORT;
