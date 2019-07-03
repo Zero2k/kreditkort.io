@@ -386,6 +386,7 @@ administration_fee?: number | null;
 administration_fee_text?: string | null;
 age?: number | null;
 features?: Array<string> | null;
+offer?: string | null;
 advantages?: Array<string> | null;
 disadvantages?: Array<string> | null;
 bonuses?: Array<string> | null;

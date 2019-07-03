@@ -25,6 +25,7 @@ export const createServer = async () => {
       path: "/subscriptions"
     },
     schema,
+    introspection: false,
     context: ({ req, res }: any) => ({
       redis,
       session: req ? req.session : undefined,
@@ -56,8 +57,7 @@ export const createServer = async () => {
       cookie: {
         httpOnly: true,
         /* REQUIRES SSL */
-        /* secure: process.env.NODE_ENV === "production", */
-        secure: false,
+        secure: process.env.NODE_ENV === "production",
         maxAge: 1000 * 60 * 60 * 24 * 7
       }
     } as any)

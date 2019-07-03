@@ -16,6 +16,7 @@ input CreateCreditcardInput {
   administration_fee_text: String
   age: Int
   features: [String!]
+  offer: String
   advantages: [String!]
   disadvantages: [String!]
   bonuses: [String!]
