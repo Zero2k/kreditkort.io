@@ -44,6 +44,7 @@ export const createServer = async () => {
     })
   );
 
+  app.enable("trust proxy");
   app.use(
     session({
       store: new RedisStore({
@@ -54,6 +55,7 @@ export const createServer = async () => {
       secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
+      proxy: true,
       cookie: {
         httpOnly: true,
         /* REQUIRES SSL */

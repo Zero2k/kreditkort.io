@@ -54,8 +54,8 @@ export const slugify = (text: string) => {
     .toString()
     .toLowerCase()
     .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(/./g, (target) => specialChars[target] || target) // Replace special characters using the hash map
-    .replace(/&/g, "-and-") // Replace & with 'and'
+    .replace(/./g, target => specialChars[target] || target) // Replace special characters using the hash map
+    .replace(/&/g, "-och-") // Replace & with 'and'
     .replace(/[^\w\-]+/g, "") // Remove all non-word chars
     .replace(/\-\-+/g, "-") // Replace multiple - with single -
     .replace(/^-+/, "") // Trim - from start of text
