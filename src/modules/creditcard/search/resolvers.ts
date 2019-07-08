@@ -8,7 +8,15 @@ export const resolvers: ResolverMap = {
     searchCreditcard: async (
       _,
       {
-        input: { name, amount, label, interest, card_types, check_uc, bad_credit },
+        input: {
+          name,
+          amount,
+          label,
+          interest,
+          card_types,
+          check_uc,
+          bad_credit
+        },
         limit = 10,
         offset = 0
       },
@@ -44,8 +52,8 @@ export const resolvers: ResolverMap = {
             ":card_types = ANY(card.card_types)",
             { card_types }
           );
-          creditcardQB.andWhere("card.exchange_rate > 0")
-          creditcardQB.orderBy("card.exchange_rate", "ASC")
+          creditcardQB.andWhere("card.exchange_rate > 0");
+          creditcardQB.orderBy("card.exchange_rate", "ASC");
         } else {
           creditcardQB = creditcardQB.andWhere(
             ":card_types = ANY(card.card_types)",
@@ -67,7 +75,17 @@ export const resolvers: ResolverMap = {
       return creditcardQB
         .take(limit)
         .skip(offset)
-        .orderBy("card.interest", "ASC")
+        .addSelect(
+          `(
+            CASE 
+              WHEN card.interest > 0 THEN 1
+              WHEN card.interest = 0 THEN 2
+            END
+            )`,
+          "priority"
+        )
+        .orderBy("priority", "ASC")
+        .addOrderBy("card.interest", "ASC")
         .getMany();
     }
   }
