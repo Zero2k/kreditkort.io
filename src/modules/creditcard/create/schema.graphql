@@ -6,6 +6,7 @@ input CreateCreditcardInput {
   information: String
   url: String
   interest: Float
+  interest_max: Float
   interest_free: Int
   amount_min: Int
   amount_max: Int

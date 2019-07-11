@@ -36,6 +36,8 @@ export class Creditcard extends BaseEntity {
 
   @Column("double precision")
   interest: number;
+  @Column("double precision", { nullable: true })
+  interest_max: number;
   @Column("int")
   interest_free: number;
 
