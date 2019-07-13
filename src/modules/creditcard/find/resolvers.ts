@@ -2,23 +2,22 @@ import { ResolverMap } from "../../../types/graphql-utils";
 import { Creditcard } from "../../../entity/Creditcard";
 import { getConnection } from "typeorm";
 
+const priority = `(
+  CASE 
+    WHEN card.interest > 0 THEN 1
+    WHEN card.interest = 0 THEN 2
+  END
+)`;
+
 export const resolvers: ResolverMap = {
   Query: {
-    findCreditcard: async (
-      _,
-      { input: { id } },
-      ___
-    ) => {
+    findCreditcard: async (_, { input: { id } }, ___) => {
       return Creditcard.findOne({
         where: { id }
       });
     },
 
-    findCreditcardBySlug: async (
-      _,
-      { input: { slug } },
-      ___
-    ) => {
+    findCreditcardBySlug: async (_, { input: { slug } }, ___) => {
       return Creditcard.findOne({
         where: { slug }
       });
@@ -26,68 +25,78 @@ export const resolvers: ResolverMap = {
 
     findCreditcardByLowestInterest: async (
       _,
-      {
-        limit = 10,
-        offset = 0
-      },
+      { limit = 10, offset = 0 },
       __
     ) => {
-      return Creditcard.find({
-        order: {
-          interest: "ASC"
-        },
-        skip: offset,
-        take: limit
-      });
+      let creditcardQB = await getConnection()
+        .getRepository(Creditcard)
+        .createQueryBuilder("card");
+
+      creditcardQB.addSelect(priority, "priority");
+
+      return creditcardQB
+        .take(limit)
+        .skip(offset)
+        .groupBy("card.id")
+        .orderBy("priority", "ASC")
+        .addOrderBy("interest", "ASC")
+        .getMany();
     },
 
     findCreditcardByHighestCredit: async (
       _,
-      {
-        limit = 10,
-        offset = 0
-      },
-      __
-    ) => {
-      return Creditcard.find({
-        order: {
-          amount_max: "DESC"
-        },
-        skip: offset,
-        take: limit
-      });
-    },
-
-    findCreditcardWithoutFee: async (
-      _,
       { limit = 10, offset = 0 },
       __
     ) => {
-      return Creditcard.find({
-        where: {
-          annual_fee: 0
-        },
-        order: {
-          amount_max: "DESC"
-        },
-        skip: offset,
-        take: limit
-      });
+      let creditcardQB = await getConnection()
+        .getRepository(Creditcard)
+        .createQueryBuilder("card");
+
+      creditcardQB.addSelect(priority, "priority");
+
+      return creditcardQB
+        .take(limit)
+        .skip(offset)
+        .groupBy("card.id")
+        .orderBy("priority", "ASC")
+        .addOrderBy("amount_max", "DESC")
+        .addOrderBy("interest", "ASC")
+        .getMany();
     },
 
-    findCreditcardInterestFree: async (
-      _,
-      { limit = 10, offset = 0 },
-      __
-    ) => {
-      return Creditcard.find({
-        order: {
-          interest_free: "DESC",
-          interest: "ASC"
-        },
-        skip: offset,
-        take: limit
-      });
+    findCreditcardWithoutFee: async (_, { limit = 10, offset = 0 }, __) => {
+      let creditcardQB = await getConnection()
+        .getRepository(Creditcard)
+        .createQueryBuilder("card");
+
+      creditcardQB.andWhere("card.annual_fee = 0");
+      creditcardQB.addSelect(priority, "priority");
+
+      return creditcardQB
+        .take(limit)
+        .skip(offset)
+        .groupBy("card.id")
+        .orderBy("priority", "ASC")
+        .addOrderBy("amount_max", "DESC")
+        .addOrderBy("interest", "ASC")
+        .getMany();
+    },
+
+    findCreditcardInterestFree: async (_, { limit = 10, offset = 0 }, __) => {
+      let creditcardQB = await getConnection()
+        .getRepository(Creditcard)
+        .createQueryBuilder("card");
+
+      creditcardQB.addSelect(priority, "priority");
+
+      return creditcardQB
+        .take(limit)
+        .skip(offset)
+        .groupBy("card.id")
+        .orderBy("priority", "ASC")
+        .addOrderBy("interest_free", "DESC")
+        .addOrderBy("interest", "ASC")
+        .getMany();
     },
 
     findCreditcardWithoutWithdrawalFee: async (
@@ -95,16 +104,20 @@ export const resolvers: ResolverMap = {
       { limit = 10, offset = 0 },
       __
     ) => {
-      return Creditcard.find({
-        where: {
-          withdrawal_fee: 0
-        },
-        order: {
-          interest: "ASC"
-        },
-        skip: offset,
-        take: limit
-      });
+      let creditcardQB = await getConnection()
+        .getRepository(Creditcard)
+        .createQueryBuilder("card");
+
+      creditcardQB.andWhere("card.withdrawal_fee = 0");
+      creditcardQB.addSelect(priority, "priority");
+
+      return creditcardQB
+        .take(limit)
+        .skip(offset)
+        .groupBy("card.id")
+        .orderBy("priority", "ASC")
+        .addOrderBy("interest", "ASC")
+        .getMany();
     },
 
     findCreditcardWithoutExchangeFee: async (
@@ -112,16 +125,20 @@ export const resolvers: ResolverMap = {
       { limit = 10, offset = 0 },
       __
     ) => {
-      return Creditcard.find({
-        where: {
-          exchange_rate: 0
-        },
-        order: {
-          interest: "ASC"
-        },
-        skip: offset,
-        take: limit
-      });
+      let creditcardQB = await getConnection()
+        .getRepository(Creditcard)
+        .createQueryBuilder("card");
+
+      creditcardQB.andWhere("card.exchange_rate = 0");
+      creditcardQB.addSelect(priority, "priority");
+
+      return creditcardQB
+        .take(limit)
+        .skip(offset)
+        .groupBy("card.id")
+        .orderBy("priority", "ASC")
+        .addOrderBy("interest", "ASC")
+        .getMany();
     },
 
     findCreditcardWithMostInsurances: async (
@@ -129,19 +146,21 @@ export const resolvers: ResolverMap = {
       { limit = 10, offset = 0 },
       __
     ) => {
-      let creditcardQB = getConnection()
-      .getRepository(Creditcard)
-      .createQueryBuilder("card")
+      let creditcardQB = await getConnection()
+        .getRepository(Creditcard)
+        .createQueryBuilder("card");
 
-      creditcardQB.addSelect("array_length(card.insurances, 1) as count")
-      creditcardQB.andWhere("array_length(card.insurances, 1) > 0")
+      creditcardQB.addSelect("array_length(card.insurances, 1) as count");
+      creditcardQB.andWhere("array_length(card.insurances, 1) > 0");
+      creditcardQB.addSelect(priority, "priority");
 
       return creditcardQB
-      .take(limit)
-      .skip(offset)
-      .groupBy("card.id")
-      .orderBy("count", "DESC")
-      .getMany();
+        .take(limit)
+        .skip(offset)
+        .groupBy("card.id")
+        .orderBy("priority", "ASC")
+        .addOrderBy("count", "DESC")
+        .getMany();
     }
   }
 };

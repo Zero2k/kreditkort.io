@@ -22,7 +22,7 @@ export const resolvers: ResolverMap = {
       },
       ___
     ) => {
-      let creditcardQB = getConnection()
+      let creditcardQB = await getConnection()
         .getRepository(Creditcard)
         .createQueryBuilder("card")
         .leftJoinAndSelect(Company, "company", "company.id = card.companyId");
