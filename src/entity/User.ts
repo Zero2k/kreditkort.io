@@ -10,6 +10,7 @@ import {
 import { Creditcard } from "./Creditcard";
 import { Company } from "./Company";
 import { Post } from "./Post";
+import { Loan } from "./Loan";
 
 @Entity("users")
 export class User extends BaseEntity {
@@ -33,6 +34,9 @@ export class User extends BaseEntity {
 
   @OneToMany(() => Company, companies => companies.user)
   companies: Company[];
+
+  @OneToMany(() => Company, loans => loans.user)
+  loans: Loan[];
 
   @OneToMany(() => Post, posts => posts.user)
   posts: Post[];

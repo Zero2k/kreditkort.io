@@ -9,6 +9,7 @@ import {
 } from "typeorm";
 import { User } from "./User";
 import { Creditcard } from "./Creditcard";
+import { Loan } from "./Loan";
 
 import { slugify } from "../utils/slugify";
 
@@ -42,6 +43,11 @@ export class Company extends BaseEntity {
     onDelete: "CASCADE"
   })
   creditcards: Creditcard[];
+
+  @OneToMany(() => Loan, loans => loans.company, {
+    onDelete: "CASCADE"
+  })
+  loans: Loan[];
 
   @BeforeInsert()
   async createSlug() {
