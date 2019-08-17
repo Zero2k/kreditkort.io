@@ -274,6 +274,8 @@ contact: boolean;
 createCreditcard: boolean;
 deleteCreditcard: boolean;
 editCreditcard: boolean;
+createLoan: boolean;
+editLoan: boolean;
 addMedia: IFile;
 removeMedia: boolean | null;
 createPost: boolean;
@@ -315,6 +317,15 @@ id: string;
 interface IEditCreditcardOnMutationArguments {
 cardId: string;
 input: IEditCreditcardInput;
+}
+
+interface ICreateLoanOnMutationArguments {
+input: ICreateLoanInput;
+}
+
+interface IEditLoanOnMutationArguments {
+loanId: string;
+input: IEditLoanInput;
 }
 
 interface IAddMediaOnMutationArguments {
@@ -427,6 +438,54 @@ traveling?: Array<string> | null;
 insurances?: Array<string> | null;
 offer?: string | null;
 card_types?: Array<string> | null;
+require_income?: boolean | null;
+check_uc?: boolean | null;
+bad_credit?: boolean | null;
+resident?: boolean | null;
+}
+
+interface ICreateLoanInput {
+companyId: string;
+name: string;
+logo?: string | null;
+information?: string | null;
+url?: string | null;
+interest?: number | null;
+interest_max?: number | null;
+amount_min?: number | null;
+amount_max?: number | null;
+setup_fee?: number | null;
+administration_fee?: number | null;
+administration_fee_text?: string | null;
+age?: number | null;
+features?: Array<string> | null;
+advantages?: Array<string> | null;
+disadvantages?: Array<string> | null;
+loan_types?: Array<string> | null;
+require_income?: boolean | null;
+check_uc?: boolean | null;
+bad_credit?: boolean | null;
+resident?: boolean | null;
+}
+
+interface IEditLoanInput {
+name: string;
+slug?: string | null;
+logo?: string | null;
+information?: string | null;
+url?: string | null;
+interest?: number | null;
+interest_max?: number | null;
+amount_min?: number | null;
+amount_max?: number | null;
+setup_fee?: number | null;
+administration_fee?: number | null;
+administration_fee_text?: string | null;
+age?: number | null;
+features?: Array<string> | null;
+advantages?: Array<string> | null;
+disadvantages?: Array<string> | null;
+loan_types?: Array<string> | null;
 require_income?: boolean | null;
 check_uc?: boolean | null;
 bad_credit?: boolean | null;

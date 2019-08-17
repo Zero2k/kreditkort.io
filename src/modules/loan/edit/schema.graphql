@@ -1,0 +1,27 @@
+input EditLoanInput {
+  name: String!
+  slug: String
+  logo: String
+  information: String
+  url: String
+  interest: Float
+  interest_max: Float
+  amount_min: Int
+  amount_max: Int
+  setup_fee: Int
+  administration_fee: Int
+  administration_fee_text: String
+  age: Int
+  features: [String!]
+  advantages: [String!]
+  disadvantages: [String!]
+  loan_types: [String!]
+  require_income: Boolean
+  check_uc: Boolean
+  bad_credit: Boolean
+  resident: Boolean
+}
+
+type Mutation {
+  editLoan(loanId: String!, input: EditLoanInput!): Boolean!
+}
