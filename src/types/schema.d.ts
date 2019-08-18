@@ -35,6 +35,7 @@ findCreditcardWithoutWithdrawalFee: Array<ICreditcard>;
 findCreditcardWithoutExchangeFee: Array<ICreditcard>;
 findCreditcardWithMostInsurances: Array<ICreditcard>;
 searchCreditcard: Array<ICreditcard>;
+searchLoan: Array<ILoan>;
 getFiles: Array<IMedia | null> | null;
 uploads: Array<IFile | null> | null;
 findPost: IPost;
@@ -103,6 +104,12 @@ limit?: number | null;
 
 interface ISearchCreditcardOnQueryArguments {
 input?: ISearchCreditcardInput | null;
+offset?: number | null;
+limit?: number | null;
+}
+
+interface ISearchLoanOnQueryArguments {
+input?: ISearchLoanInput | null;
 offset?: number | null;
 limit?: number | null;
 }
@@ -208,6 +215,42 @@ interest?: number | null;
 card_types?: string | null;
 check_uc?: boolean | null;
 bad_credit?: boolean | null;
+}
+
+interface ISearchLoanInput {
+amount?: number | null;
+interest?: number | null;
+loan_types?: string | null;
+check_uc?: boolean | null;
+bad_credit?: boolean | null;
+}
+
+interface ILoan {
+__typename: "Loan";
+id: string;
+name: string;
+slug: string | null;
+logo: string | null;
+information: string | null;
+markdown: string | null;
+url: string | null;
+interest: number | null;
+interest_max: number | null;
+amount_min: number | null;
+amount_max: number | null;
+setup_fee: number | null;
+administration_fee: number | null;
+administration_fee_text: string | null;
+age: number | null;
+features: Array<string> | null;
+advantages: Array<string> | null;
+disadvantages: Array<string> | null;
+loan_types: Array<string> | null;
+require_income: boolean | null;
+check_uc: boolean | null;
+bad_credit: boolean | null;
+resident: boolean | null;
+company: ICompany;
 }
 
 interface IMedia {

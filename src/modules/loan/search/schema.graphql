@@ -1,0 +1,15 @@
+input SearchLoanInput {
+  amount: Int
+  interest: Int
+  loan_types: String
+  check_uc: Boolean
+  bad_credit: Boolean
+}
+
+type Query {
+  searchLoan(
+    input: SearchLoanInput
+    offset: Int
+    limit: Int
+  ): [Loan!]!
+}
