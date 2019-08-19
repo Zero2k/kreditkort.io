@@ -1,6 +1,5 @@
 import { ResolverMap } from "../../../types/graphql-utils";
-
-import { parseMd } from "../../../utils/parseMd";
+var md = require("markdown-it")();
 
 export const resolvers: ResolverMap = {
   Post: {
@@ -9,7 +8,7 @@ export const resolvers: ResolverMap = {
     },
     markdown: async ({ text }, __, ___) => {
       if (text) {
-        return parseMd(text);
+        return md.render(text);
       }
 
       return null;

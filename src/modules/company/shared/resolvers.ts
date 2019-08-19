@@ -1,15 +1,10 @@
 import { ResolverMap } from "../../../types/graphql-utils";
 import { Creditcard } from "../../../entity/Creditcard";
-
-import { parseMd } from "../../../utils/parseMd";
+var md = require("markdown-it")();
 
 export const resolvers: ResolverMap = {
   Company: {
-    creditcards: async ({ id }, 
-      {
-        limit = 10,
-        offset = 0
-      }, ___) => {
+    creditcards: async ({ id }, { limit = 10, offset = 0 }, ___) => {
       return Creditcard.find({
         where: { companyId: id },
         order: {
@@ -21,7 +16,7 @@ export const resolvers: ResolverMap = {
     },
     markdown: async ({ about }, __, ___) => {
       if (about) {
-        return parseMd(about);
+        return md.render(about);
       }
 
       return null;

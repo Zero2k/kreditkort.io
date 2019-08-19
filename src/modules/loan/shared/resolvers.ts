@@ -1,7 +1,7 @@
 import { ResolverMap } from "../../../types/graphql-utils";
 import { Loan } from "../../../entity/Loan";
 
-import { parseMd } from "../../../utils/parseMd";
+var md = require("markdown-it")();
 
 export const resolvers: ResolverMap = {
   Loan: {
@@ -10,7 +10,7 @@ export const resolvers: ResolverMap = {
     },
     markdown: async ({ information }, __, ___) => {
       if (information) {
-        return parseMd(information);
+        return md.render(information);
       }
 
       return null;
