@@ -10,4 +10,8 @@ type Company {
     offset: Int
     limit: Int
   ): [Creditcard]!
+  loans(
+    offset: Int
+    limit: Int
+  ): [Loan]!
 }

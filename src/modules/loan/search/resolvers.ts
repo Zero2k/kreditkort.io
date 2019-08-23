@@ -8,7 +8,7 @@ export const resolvers: ResolverMap = {
     searchLoan: async (
       _,
       {
-        input: { amount, interest, loan_types, check_uc, bad_credit },
+        input: { amount, interest, loan_type, check_uc, bad_credit },
         limit = 10,
         offset = 0
       },
@@ -28,9 +28,9 @@ export const resolvers: ResolverMap = {
           interest
         });
       }
-      if (loan_types) {
-        loanQB = loanQB.andWhere(":loan_types = ANY(loan.loan_types)", {
-          loan_types
+      if (loan_type) {
+        loanQB = loanQB.andWhere(":loan_type = ANY(loan.loan_type)", {
+          loan_type
         });
       }
       if (check_uc) {

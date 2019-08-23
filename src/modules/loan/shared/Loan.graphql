@@ -17,7 +17,7 @@ type Loan {
   features: [String!]
   advantages: [String!]
   disadvantages: [String!]
-  loan_types: [String!]
+  loan_type: String
   require_income: Boolean
   check_uc: Boolean
   bad_credit: Boolean

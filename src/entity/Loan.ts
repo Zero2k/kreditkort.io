@@ -62,8 +62,8 @@ export class Loan extends BaseEntity {
   @Column("text", { array: true, nullable: true })
   disadvantages: string[];
 
-  @Column("text", { array: true, nullable: true })
-  loan_types: string[];
+  @Column("text", { nullable: false })
+  loan_type: string;
 
   @Column("boolean", { default: false })
   require_income: boolean;

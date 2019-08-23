@@ -148,9 +148,15 @@ website: string | null;
 about: string | null;
 markdown: string | null;
 creditcards: Array<ICreditcard | null>;
+loans: Array<ILoan | null>;
 }
 
 interface ICreditcardsOnCompanyArguments {
+offset?: number | null;
+limit?: number | null;
+}
+
+interface ILoansOnCompanyArguments {
 offset?: number | null;
 limit?: number | null;
 }
@@ -191,6 +197,34 @@ resident: boolean | null;
 company: ICompany;
 }
 
+interface ILoan {
+__typename: "Loan";
+id: string;
+name: string;
+slug: string | null;
+logo: string | null;
+information: string | null;
+markdown: string | null;
+url: string | null;
+interest: number | null;
+interest_max: number | null;
+amount_min: number | null;
+amount_max: number | null;
+setup_fee: number | null;
+administration_fee: number | null;
+administration_fee_text: string | null;
+age: number | null;
+features: Array<string> | null;
+advantages: Array<string> | null;
+disadvantages: Array<string> | null;
+loan_type: string | null;
+require_income: boolean | null;
+check_uc: boolean | null;
+bad_credit: boolean | null;
+resident: boolean | null;
+company: ICompany;
+}
+
 interface IFindCompanyBySlugInput {
 slug: string;
 }
@@ -220,37 +254,9 @@ bad_credit?: boolean | null;
 interface ISearchLoanInput {
 amount?: number | null;
 interest?: number | null;
-loan_types?: string | null;
+loan_type?: string | null;
 check_uc?: boolean | null;
 bad_credit?: boolean | null;
-}
-
-interface ILoan {
-__typename: "Loan";
-id: string;
-name: string;
-slug: string | null;
-logo: string | null;
-information: string | null;
-markdown: string | null;
-url: string | null;
-interest: number | null;
-interest_max: number | null;
-amount_min: number | null;
-amount_max: number | null;
-setup_fee: number | null;
-administration_fee: number | null;
-administration_fee_text: string | null;
-age: number | null;
-features: Array<string> | null;
-advantages: Array<string> | null;
-disadvantages: Array<string> | null;
-loan_types: Array<string> | null;
-require_income: boolean | null;
-check_uc: boolean | null;
-bad_credit: boolean | null;
-resident: boolean | null;
-company: ICompany;
 }
 
 interface IMedia {
@@ -504,7 +510,7 @@ age?: number | null;
 features?: Array<string> | null;
 advantages?: Array<string> | null;
 disadvantages?: Array<string> | null;
-loan_types?: Array<string> | null;
+loan_type?: string | null;
 require_income?: boolean | null;
 check_uc?: boolean | null;
 bad_credit?: boolean | null;
@@ -528,7 +534,7 @@ age?: number | null;
 features?: Array<string> | null;
 advantages?: Array<string> | null;
 disadvantages?: Array<string> | null;
-loan_types?: Array<string> | null;
+loan_type?: string | null;
 require_income?: boolean | null;
 check_uc?: boolean | null;
 bad_credit?: boolean | null;

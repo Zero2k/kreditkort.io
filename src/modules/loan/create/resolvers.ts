@@ -3,7 +3,7 @@ import { Loan } from "../../../entity/Loan";
 
 export const resolvers: ResolverMap = {
   Mutation: {
-    createCreditcard: async (_, { input: { ...data } }, { session }) => {
+    createLoan: async (_, { input: { ...data } }, { session }) => {
       await Loan.create({
         ...data,
         userId: session.userId
