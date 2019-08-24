@@ -18,6 +18,10 @@ export const middleware = {
     createCreditcard: isAuthenticated,
     deleteCreditcard: isAuthenticated,
     editCreditcard: isAuthenticated,
+    /* Loan */
+    createLoan: isAuthenticated,
+    deleteLoan: isAuthenticated,
+    editLoan: isAuthenticated,
     /* Comapny */
     createCompany: isAuthenticated,
     deleteCompany: isAuthenticated,

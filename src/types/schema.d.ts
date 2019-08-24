@@ -35,6 +35,7 @@ findCreditcardWithoutWithdrawalFee: Array<ICreditcard>;
 findCreditcardWithoutExchangeFee: Array<ICreditcard>;
 findCreditcardWithMostInsurances: Array<ICreditcard>;
 searchCreditcard: Array<ICreditcard>;
+findLoan: ILoan;
 searchLoan: Array<ILoan>;
 getFiles: Array<IMedia | null> | null;
 uploads: Array<IFile | null> | null;
@@ -106,6 +107,10 @@ interface ISearchCreditcardOnQueryArguments {
 input?: ISearchCreditcardInput | null;
 offset?: number | null;
 limit?: number | null;
+}
+
+interface IFindLoanOnQueryArguments {
+input?: IFindLoanInput | null;
 }
 
 interface ISearchLoanOnQueryArguments {
@@ -251,6 +256,10 @@ check_uc?: boolean | null;
 bad_credit?: boolean | null;
 }
 
+interface IFindLoanInput {
+id: string;
+}
+
 interface ISearchLoanInput {
 amount?: number | null;
 interest?: number | null;
@@ -324,6 +333,7 @@ createCreditcard: boolean;
 deleteCreditcard: boolean;
 editCreditcard: boolean;
 createLoan: boolean;
+deleteLoan: boolean;
 editLoan: boolean;
 addMedia: IFile;
 removeMedia: boolean | null;
@@ -370,6 +380,10 @@ input: IEditCreditcardInput;
 
 interface ICreateLoanOnMutationArguments {
 input: ICreateLoanInput;
+}
+
+interface IDeleteLoanOnMutationArguments {
+id: string;
 }
 
 interface IEditLoanOnMutationArguments {

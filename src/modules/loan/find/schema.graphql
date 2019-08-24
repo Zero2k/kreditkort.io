@@ -1,0 +1,9 @@
+input FindLoanInput {
+  id: String!
+}
+
+type Query {
+  findLoan(
+    input: FindLoanInput
+  ): Loan!
+}
