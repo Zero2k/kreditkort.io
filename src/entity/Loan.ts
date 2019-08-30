@@ -42,6 +42,12 @@ export class Loan extends BaseEntity {
   amount_max: number;
 
   @Column("int", { nullable: true })
+  term_min: number;
+
+  @Column("int", { nullable: false })
+  term_max: number;
+
+  @Column("int", { nullable: true })
   setup_fee: number;
 
   @Column("int", { nullable: true })

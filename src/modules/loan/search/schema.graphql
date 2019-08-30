@@ -1,6 +1,7 @@
 input SearchLoanInput {
   amount: Int
   interest: Int
+  term_max: Int
   loan_type: String
   check_uc: Boolean
   bad_credit: Boolean

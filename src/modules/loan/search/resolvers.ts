@@ -29,7 +29,7 @@ export const resolvers: ResolverMap = {
         });
       }
       if (loan_type) {
-        loanQB = loanQB.andWhere(":loan_type = ANY(loan.loan_type)", {
+        loanQB = loanQB.andWhere(":loan_type = loan.loan_type", {
           loan_type
         });
       }

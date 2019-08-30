@@ -8,6 +8,8 @@ input CreateLoanInput {
   interest_max: Float
   amount_min: Int
   amount_max: Int
+  term_min: Int
+  term_max: Int
   setup_fee: Int
   administration_fee: Int
   administration_fee_text: String
