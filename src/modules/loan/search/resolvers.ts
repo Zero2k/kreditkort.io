@@ -58,6 +58,7 @@ export const resolvers: ResolverMap = {
         )
         .orderBy("priority", "ASC")
         .addOrderBy("loan.interest", "ASC")
+        .addOrderBy("loan.interest_max", "ASC")
         .getMany();
     }
   }

@@ -18,6 +18,7 @@ input CreateLoanInput {
   advantages: [String!]
   disadvantages: [String!]
   loan_type: String
+  offer: String
   require_income: Boolean
   check_uc: Boolean
   bad_credit: Boolean

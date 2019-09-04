@@ -71,6 +71,9 @@ export class Loan extends BaseEntity {
   @Column("text", { nullable: false })
   loan_type: string;
 
+  @Column("text", { nullable: true })
+  offer: string;
+
   @Column("boolean", { default: false })
   require_income: boolean;
 
