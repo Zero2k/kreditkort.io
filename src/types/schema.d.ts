@@ -227,7 +227,7 @@ disadvantages: Array<string> | null;
 loan_type: string | null;
 offer: string | null;
 require_income: boolean | null;
-check_uc: boolean | null;
+without_uc: boolean | null;
 bad_credit: boolean | null;
 resident: boolean | null;
 company: ICompany;
@@ -264,12 +264,16 @@ id: string;
 }
 
 interface ISearchLoanInput {
-amount?: number | null;
-interest?: number | null;
-term_max?: number | null;
+amount?: string | null;
+term?: string | null;
 loan_type?: string | null;
-check_uc?: boolean | null;
-bad_credit?: boolean | null;
+filter?: IFilter | null;
+}
+
+interface IFilter {
+ga?: boolean | null;
+uc?: boolean | null;
+ki?: boolean | null;
 }
 
 interface IMedia {
@@ -533,7 +537,7 @@ disadvantages?: Array<string> | null;
 loan_type?: string | null;
 offer?: string | null;
 require_income?: boolean | null;
-check_uc?: boolean | null;
+without_uc?: boolean | null;
 bad_credit?: boolean | null;
 resident?: boolean | null;
 }
@@ -560,7 +564,7 @@ disadvantages?: Array<string> | null;
 loan_type?: string | null;
 offer?: string | null;
 require_income?: boolean | null;
-check_uc?: boolean | null;
+without_uc?: boolean | null;
 bad_credit?: boolean | null;
 resident?: boolean | null;
 }

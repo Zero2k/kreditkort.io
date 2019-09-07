@@ -1,10 +1,14 @@
 input SearchLoanInput {
-  amount: Int
-  interest: Int
-  term_max: Int
+  amount: String
+  term: String
   loan_type: String
-  check_uc: Boolean
-  bad_credit: Boolean
+  filter: Filter
+}
+
+input Filter {
+  ga: Boolean
+  uc: Boolean
+  ki: Boolean
 }
 
 type Query {

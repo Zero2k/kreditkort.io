@@ -20,7 +20,7 @@ input EditLoanInput {
   loan_type: String
   offer: String
   require_income: Boolean
-  check_uc: Boolean
+  without_uc: Boolean
   bad_credit: Boolean
   resident: Boolean
 }

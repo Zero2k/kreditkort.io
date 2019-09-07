@@ -7,11 +7,7 @@ export const resolvers: ResolverMap = {
   Query: {
     searchLoan: async (
       _,
-      {
-        input: { amount, interest, loan_type, check_uc, bad_credit },
-        limit = 10,
-        offset = 0
-      },
+      { input: { amount, term, loan_type, filter }, limit = 10, offset = 0 },
       ___
     ) => {
       let loanQB = await getConnection()
@@ -19,13 +15,13 @@ export const resolvers: ResolverMap = {
         .createQueryBuilder("loan")
         .leftJoinAndSelect(Company, "company", "company.id = loan.companyId");
       if (amount) {
-        loanQB = loanQB.andWhere("loan.amount_min >= :amount", {
+        loanQB = loanQB.andWhere("loan.amount_max >= :amount", {
           amount
         });
       }
-      if (interest) {
-        loanQB = loanQB.andWhere("loan.interest <= :interest", {
-          interest
+      if (term) {
+        loanQB = loanQB.andWhere("loan.term_max >= :term", {
+          term
         });
       }
       if (loan_type) {
@@ -33,14 +29,19 @@ export const resolvers: ResolverMap = {
           loan_type
         });
       }
-      if (check_uc) {
-        loanQB = loanQB.andWhere("loan.check_uc = :check_uc", {
-          check_uc
+      if (filter.uc) {
+        loanQB = loanQB.andWhere("loan.without_uc = :without_uc", {
+          without_uc: filter.uc
         });
       }
-      if (bad_credit) {
+      if (filter.ga) {
         loanQB = loanQB.andWhere("loan.bad_credit = :bad_credit", {
-          bad_credit
+          bad_credit: filter.ga
+        });
+      }
+      if (filter.ki) {
+        loanQB = loanQB.andWhere("loan.require_income = :require_income", {
+          require_income: filter.ki
         });
       }
 

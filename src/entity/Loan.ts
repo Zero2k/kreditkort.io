@@ -77,8 +77,8 @@ export class Loan extends BaseEntity {
   @Column("boolean", { default: false })
   require_income: boolean;
 
-  @Column("boolean", { default: true })
-  check_uc: boolean;
+  @Column("boolean", { default: false })
+  without_uc: boolean;
 
   @Column("boolean", { default: false })
   bad_credit: boolean;
