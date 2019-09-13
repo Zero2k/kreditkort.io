@@ -24,6 +24,7 @@ type Loan {
   require_income: Boolean
   without_uc: Boolean
   bad_credit: Boolean
+  loan_broker: Boolean
   resident: Boolean
   company: Company!
 }

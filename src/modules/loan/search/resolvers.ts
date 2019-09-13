@@ -44,6 +44,11 @@ export const resolvers: ResolverMap = {
           require_income: filter.ki
         });
       }
+      if (filter.lf) {
+        loanQB = loanQB.andWhere("loan.loan_broker = :loan_broker", {
+          loan_broker: filter.lf
+        });
+      }
 
       return loanQB
         .take(limit)

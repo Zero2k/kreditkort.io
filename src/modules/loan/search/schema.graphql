@@ -9,6 +9,7 @@ input Filter {
   ga: Boolean
   uc: Boolean
   ki: Boolean
+  lf: Boolean
 }
 
 type Query {

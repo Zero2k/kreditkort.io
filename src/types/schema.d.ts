@@ -229,6 +229,7 @@ offer: string | null;
 require_income: boolean | null;
 without_uc: boolean | null;
 bad_credit: boolean | null;
+loan_broker: boolean | null;
 resident: boolean | null;
 company: ICompany;
 }
@@ -274,6 +275,7 @@ interface IFilter {
 ga?: boolean | null;
 uc?: boolean | null;
 ki?: boolean | null;
+lf?: boolean | null;
 }
 
 interface IMedia {
@@ -539,6 +541,7 @@ offer?: string | null;
 require_income?: boolean | null;
 without_uc?: boolean | null;
 bad_credit?: boolean | null;
+loan_broker?: boolean | null;
 resident?: boolean | null;
 }
 
@@ -566,6 +569,7 @@ offer?: string | null;
 require_income?: boolean | null;
 without_uc?: boolean | null;
 bad_credit?: boolean | null;
+loan_broker?: boolean | null;
 resident?: boolean | null;
 }
 
