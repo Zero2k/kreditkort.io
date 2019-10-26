@@ -6,4 +6,9 @@ type Query {
   findLoan(
     input: FindLoanInput
   ): Loan!
+
+  findPrivateLoan(
+    offset: Int
+    limit: Int
+  ): [Loan!]!
 }
