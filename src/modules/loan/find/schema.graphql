@@ -11,4 +11,9 @@ type Query {
     offset: Int
     limit: Int
   ): [Loan!]!
+
+  findBusinessLoan(
+    offset: Int
+    limit: Int
+  ): [Loan!]!
 }

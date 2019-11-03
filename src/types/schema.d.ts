@@ -36,6 +36,8 @@ findCreditcardWithoutExchangeFee: Array<ICreditcard>;
 findCreditcardWithMostInsurances: Array<ICreditcard>;
 searchCreditcard: Array<ICreditcard>;
 findLoan: ILoan;
+findPrivateLoan: Array<ILoan>;
+findBusinessLoan: Array<ILoan>;
 searchLoan: Array<ILoan>;
 getFiles: Array<IMedia | null> | null;
 uploads: Array<IFile | null> | null;
@@ -111,6 +113,16 @@ limit?: number | null;
 
 interface IFindLoanOnQueryArguments {
 input?: IFindLoanInput | null;
+}
+
+interface IFindPrivateLoanOnQueryArguments {
+offset?: number | null;
+limit?: number | null;
+}
+
+interface IFindBusinessLoanOnQueryArguments {
+offset?: number | null;
+limit?: number | null;
 }
 
 interface ISearchLoanOnQueryArguments {
