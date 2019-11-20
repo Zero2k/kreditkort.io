@@ -3,17 +3,11 @@ input FindLoanInput {
 }
 
 type Query {
-  findLoan(
-    input: FindLoanInput
-  ): Loan!
+  findLoan(input: FindLoanInput): Loan!
 
-  findPrivateLoan(
-    offset: Int
-    limit: Int
-  ): [Loan!]!
+  findPrivateLoan(offset: Int, limit: Int): [Loan!]!
 
-  findBusinessLoan(
-    offset: Int
-    limit: Int
-  ): [Loan!]!
+  findBusinessLoan(offset: Int, limit: Int): [Loan!]!
+
+  findDebtConsolidationLoan(offset: Int, limit: Int): [Loan!]!
 }
