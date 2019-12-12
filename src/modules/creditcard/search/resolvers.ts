@@ -2,6 +2,7 @@ import { ResolverMap } from "../../../types/graphql-utils";
 import { Creditcard } from "../../../entity/Creditcard";
 import { Company } from "../../../entity/Company";
 import { getConnection } from "typeorm";
+import { priority, totalRating } from "../../../utils/customSelects";
 
 export const resolvers: ResolverMap = {
   Query: {
@@ -75,17 +76,13 @@ export const resolvers: ResolverMap = {
       return creditcardQB
         .take(limit)
         .skip(offset)
-        .addSelect(
-          `(
-            CASE 
-              WHEN card.interest > 0 THEN 1
-              WHEN card.interest = 0 THEN 2
-            END
-            )`,
-          "priority"
-        )
-        .orderBy("priority", "ASC")
-        .addOrderBy("card.interest", "ASC")
+        .addSelect(totalRating, "rating")
+        .addSelect(priority, "priority")
+
+        .orderBy({
+          rating: "DESC",
+          priority: "ASC"
+        })
         .getMany();
     }
   }

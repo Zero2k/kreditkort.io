@@ -22,8 +22,11 @@ type Creditcard {
   advantages: [String!]
   disadvantages: [String!]
   bonuses: [String!]
+  bonuses_rating: Int
   traveling: [String!]
+  traveling_rating: Int
   insurances: [String!]
+  insurances_rating: Int
   offer: String
   card_types: [String!]
   require_income: Boolean

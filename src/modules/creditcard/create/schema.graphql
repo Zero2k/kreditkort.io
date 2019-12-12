@@ -21,8 +21,11 @@ input CreateCreditcardInput {
   advantages: [String!]
   disadvantages: [String!]
   bonuses: [String!]
+  bonuses_rating: Int
   traveling: [String!]
+  traveling_rating: Int
   insurances: [String!]
+  insurances_rating: Int
   card_types: [String!]
   require_income: Boolean
   check_uc: Boolean

@@ -76,11 +76,20 @@ export class Creditcard extends BaseEntity {
   @Column("text", { array: true, nullable: true })
   bonuses: string[];
 
+  @Column("int", { nullable: true })
+  bonuses_rating: number;
+
   @Column("text", { array: true, nullable: true })
   traveling: string[];
 
+  @Column("int", { nullable: true })
+  traveling_rating: number;
+
   @Column("text", { array: true, nullable: true })
   insurances: string[];
+
+  @Column("int", { nullable: true })
+  insurances_rating: number;
 
   @Column("text", { nullable: true })
   offer: string;
@@ -106,12 +115,19 @@ export class Creditcard extends BaseEntity {
   @Column("uuid")
   companyId: string;
 
-  @ManyToOne(() => User, user => user.creditcards)
+  @ManyToOne(
+    () => User,
+    user => user.creditcards
+  )
   user: User;
 
-  @ManyToOne(() => Company, company => company.creditcards, {
-    onDelete: "CASCADE"
-  })
+  @ManyToOne(
+    () => Company,
+    company => company.creditcards,
+    {
+      onDelete: "CASCADE"
+    }
+  )
   company: Company;
 
   @BeforeInsert()

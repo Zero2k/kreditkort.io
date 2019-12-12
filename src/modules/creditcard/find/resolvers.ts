@@ -2,12 +2,7 @@ import { ResolverMap } from "../../../types/graphql-utils";
 import { Creditcard } from "../../../entity/Creditcard";
 import { getConnection } from "typeorm";
 
-const priority = `(
-  CASE 
-    WHEN card.interest > 0 THEN 1
-    WHEN card.interest = 0 THEN 2
-  END
-)`;
+import { priority } from "../../../utils/customSelects";
 
 export const resolvers: ResolverMap = {
   Query: {
