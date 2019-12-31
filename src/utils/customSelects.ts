@@ -7,3 +7,5 @@ export const priority = `(
 )`;
 
 export const totalRating = `(card.bonuses_rating + card.traveling_rating + card.insurances_rating)`;
+
+export const insuranceRating = `(card.insurances_rating)`;
