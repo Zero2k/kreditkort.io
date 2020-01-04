@@ -26,6 +26,11 @@ export class Creditcard extends BaseEntity {
   logo: string;
 
   @Column("text", { nullable: true })
+  seo_title: string;
+  @Column("text", { nullable: true })
+  seo_description: string;
+
+  @Column("text", { nullable: true })
   label: string;
 
   @Column("text", { nullable: true })

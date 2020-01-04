@@ -190,6 +190,8 @@ id: string;
 name: string;
 slug: string | null;
 logo: string | null;
+seo_title: string | null;
+seo_description: string | null;
 label: string | null;
 information: string | null;
 markdown: string | null;
@@ -513,6 +515,8 @@ interface IEditCreditcardInput {
 name: string;
 slug?: string | null;
 logo?: string | null;
+seo_title?: string | null;
+seo_description?: string | null;
 label?: string | null;
 information?: string | null;
 url?: string | null;

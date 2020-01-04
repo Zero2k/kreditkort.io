@@ -3,6 +3,8 @@ type Creditcard {
   name: String!
   slug: String
   logo: String
+  seo_title: String
+  seo_description: String
   label: String
   information: String
   markdown: String
