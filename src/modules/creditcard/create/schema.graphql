@@ -2,6 +2,8 @@ input CreateCreditcardInput {
   companyId: ID!
   name: String!
   logo: String
+  seo_title: String
+  seo_description: String
   label: String
   information: String
   url: String

@@ -480,6 +480,8 @@ interface ICreateCreditcardInput {
 companyId: string;
 name: string;
 logo?: string | null;
+seo_title?: string | null;
+seo_description?: string | null;
 label?: string | null;
 information?: string | null;
 url?: string | null;
