@@ -10,4 +10,6 @@ type Query {
   findBusinessLoan(offset: Int, limit: Int): [Loan!]!
 
   findDebtConsolidationLoan(offset: Int, limit: Int): [Loan!]!
+
+  findLoanProviders(offset: Int, limit: Int): [Loan!]!
 }

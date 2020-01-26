@@ -39,6 +39,7 @@ findLoan: ILoan;
 findPrivateLoan: Array<ILoan>;
 findBusinessLoan: Array<ILoan>;
 findDebtConsolidationLoan: Array<ILoan>;
+findLoanProviders: Array<ILoan>;
 searchLoan: Array<ILoan>;
 getFiles: Array<IMedia | null> | null;
 uploads: Array<IFile | null> | null;
@@ -127,6 +128,11 @@ limit?: number | null;
 }
 
 interface IFindDebtConsolidationLoanOnQueryArguments {
+offset?: number | null;
+limit?: number | null;
+}
+
+interface IFindLoanProvidersOnQueryArguments {
 offset?: number | null;
 limit?: number | null;
 }

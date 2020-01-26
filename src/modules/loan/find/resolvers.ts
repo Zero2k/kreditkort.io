@@ -56,6 +56,22 @@ export const resolvers: ResolverMap = {
         .addOrderBy("amount_max", "DESC")
         .addOrderBy("interest", "ASC")
         .getMany();
+    },
+
+    findLoanProviders: async (_, { limit = 10, offset = 0 }, __) => {
+      let loanQB = await getConnection()
+        .getRepository(Loan)
+        .createQueryBuilder("loan");
+
+      loanQB.andWhere("loan.loan_type = 'laneformedlare'");
+
+      return loanQB
+        .take(limit)
+        .skip(offset)
+        .groupBy("loan.id")
+        .addOrderBy("amount_max", "DESC")
+        .addOrderBy("interest", "ASC")
+        .getMany();
     }
   }
 };
