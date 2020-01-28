@@ -68,8 +68,8 @@ export class Loan extends BaseEntity {
   @Column("text", { array: true, nullable: true })
   disadvantages: string[];
 
-  @Column("text", { nullable: false })
-  loan_type: string;
+  @Column("text", { array: true, nullable: true })
+  loan_types: string[];
 
   @Column("text", { nullable: true })
   offer: string;
@@ -95,12 +95,19 @@ export class Loan extends BaseEntity {
   @Column("uuid")
   companyId: string;
 
-  @ManyToOne(() => User, user => user.loans)
+  @ManyToOne(
+    () => User,
+    user => user.loans
+  )
   user: User;
 
-  @ManyToOne(() => Company, company => company.loans, {
-    onDelete: "CASCADE"
-  })
+  @ManyToOne(
+    () => Company,
+    company => company.loans,
+    {
+      onDelete: "CASCADE"
+    }
+  )
   company: Company;
 
   @BeforeInsert()

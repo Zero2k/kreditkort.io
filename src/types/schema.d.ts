@@ -36,10 +36,7 @@ findCreditcardWithoutExchangeFee: Array<ICreditcard>;
 findCreditcardWithMostInsurances: Array<ICreditcard>;
 searchCreditcard: Array<ICreditcard>;
 findLoan: ILoan;
-findPrivateLoan: Array<ILoan>;
-findBusinessLoan: Array<ILoan>;
-findDebtConsolidationLoan: Array<ILoan>;
-findLoanProviders: Array<ILoan>;
+findLoanByType: Array<ILoan>;
 searchLoan: Array<ILoan>;
 getFiles: Array<IMedia | null> | null;
 uploads: Array<IFile | null> | null;
@@ -117,24 +114,8 @@ interface IFindLoanOnQueryArguments {
 input?: IFindLoanInput | null;
 }
 
-interface IFindPrivateLoanOnQueryArguments {
-offset?: number | null;
-limit?: number | null;
-}
-
-interface IFindBusinessLoanOnQueryArguments {
-offset?: number | null;
-limit?: number | null;
-}
-
-interface IFindDebtConsolidationLoanOnQueryArguments {
-offset?: number | null;
-limit?: number | null;
-}
-
-interface IFindLoanProvidersOnQueryArguments {
-offset?: number | null;
-limit?: number | null;
+interface IFindLoanByTypeOnQueryArguments {
+input?: IFindLoanByTypeInput | null;
 }
 
 interface ISearchLoanOnQueryArguments {
@@ -253,7 +234,7 @@ age: number | null;
 features: Array<string> | null;
 advantages: Array<string> | null;
 disadvantages: Array<string> | null;
-loan_type: string | null;
+loan_types: Array<string> | null;
 offer: string | null;
 require_income: boolean | null;
 without_uc: boolean | null;
@@ -293,10 +274,16 @@ interface IFindLoanInput {
 id: string;
 }
 
+interface IFindLoanByTypeInput {
+type?: string | null;
+offset?: number | null;
+limit?: number | null;
+}
+
 interface ISearchLoanInput {
 amount?: string | null;
 term?: string | null;
-loan_type?: string | null;
+loan_types?: string | null;
 filter?: IFilter | null;
 }
 
@@ -575,7 +562,7 @@ age?: number | null;
 features?: Array<string> | null;
 advantages?: Array<string> | null;
 disadvantages?: Array<string> | null;
-loan_type?: string | null;
+loan_types?: Array<string> | null;
 offer?: string | null;
 require_income?: boolean | null;
 without_uc?: boolean | null;
@@ -603,7 +590,7 @@ age?: number | null;
 features?: Array<string> | null;
 advantages?: Array<string> | null;
 disadvantages?: Array<string> | null;
-loan_type?: string | null;
+loan_types?: Array<string> | null;
 offer?: string | null;
 require_income?: boolean | null;
 without_uc?: boolean | null;

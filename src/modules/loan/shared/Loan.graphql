@@ -19,7 +19,7 @@ type Loan {
   features: [String!]
   advantages: [String!]
   disadvantages: [String!]
-  loan_type: String
+  loan_types: [String!]
   offer: String
   require_income: Boolean
   without_uc: Boolean

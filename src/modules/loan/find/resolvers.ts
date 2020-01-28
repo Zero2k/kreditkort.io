@@ -10,60 +10,18 @@ export const resolvers: ResolverMap = {
       });
     },
 
-    findPrivateLoan: async (_, { limit = 10, offset = 0 }, __) => {
+    findLoanByType: async (
+      _,
+      { input: { type = "privatlan", limit = 10, offset = 0 } },
+      __
+    ) => {
       let loanQB = await getConnection()
         .getRepository(Loan)
         .createQueryBuilder("loan");
 
-      loanQB.andWhere("loan.loan_type = 'privatlan'");
-
-      return loanQB
-        .take(limit)
-        .skip(offset)
-        .groupBy("loan.id")
-        .addOrderBy("amount_max", "DESC")
-        .addOrderBy("interest", "ASC")
-        .getMany();
-    },
-
-    findBusinessLoan: async (_, { limit = 10, offset = 0 }, __) => {
-      let loanQB = await getConnection()
-        .getRepository(Loan)
-        .createQueryBuilder("loan");
-
-      loanQB.andWhere("loan.loan_type = 'foretagslan'");
-
-      return loanQB
-        .take(limit)
-        .skip(offset)
-        .groupBy("loan.id")
-        .addOrderBy("amount_max", "DESC")
-        .addOrderBy("interest", "ASC")
-        .getMany();
-    },
-
-    findDebtConsolidationLoan: async (_, { limit = 10, offset = 0 }, __) => {
-      let loanQB = await getConnection()
-        .getRepository(Loan)
-        .createQueryBuilder("loan");
-
-      loanQB.andWhere("loan.loan_type = 'samlingslan'");
-
-      return loanQB
-        .take(limit)
-        .skip(offset)
-        .groupBy("loan.id")
-        .addOrderBy("amount_max", "DESC")
-        .addOrderBy("interest", "ASC")
-        .getMany();
-    },
-
-    findLoanProviders: async (_, { limit = 10, offset = 0 }, __) => {
-      let loanQB = await getConnection()
-        .getRepository(Loan)
-        .createQueryBuilder("loan");
-
-      loanQB.andWhere("loan.loan_type = 'laneformedlare'");
+      loanQB.andWhere(":loan_types = ANY(loan.loan_types)", {
+        loan_types: type
+      });
 
       return loanQB
         .take(limit)
