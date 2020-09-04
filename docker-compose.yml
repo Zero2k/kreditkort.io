@@ -1,4 +1,4 @@
-version: "3.7"
+version: '3.7'
 services:
   db:
     image: postgres
@@ -15,13 +15,13 @@ services:
     image: redis
     ports:
       - '6379:6379'
-    
+
   server:
-    image: dev-kreditkort-backend
-    depends_on: 
+    image: zero2k/backend:latest
+    depends_on:
       - db
       - redis
     environment:
-    - REDIS_URL=redis:6379
+      - REDIS_URL=redis:6379
     ports:
       - '4000:4000'

@@ -7,7 +7,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2 - Run
-FROM node
+FROM node:12-alpine
 WORKDIR /usr/app
 COPY package*.json ./
 RUN npm install --production

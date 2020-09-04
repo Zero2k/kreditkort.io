@@ -1,3 +1,5 @@
-import { createServer } from "./createServer";
+import { createServer } from './createServer';
 
-createServer();
+createServer().catch((err) => {
+  console.log(err);
+});
