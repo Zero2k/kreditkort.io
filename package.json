@@ -45,7 +45,7 @@
     "persistgraphql": "^0.3.11",
     "pg": "^7.3.0",
     "reflect-metadata": "^0.1.12",
-    "typeorm": "0.2.7"
+    "typeorm": "0.2.25"
   },
   "scripts": {
     "start": "NODE_ENV=development nodemon --exec ts-node src/index.ts",
